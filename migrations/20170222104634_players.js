@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.string("username").unique().notNullable();
     table.specificType("hashed_password", 'char(60)').notNullable();
     table.string("email").unique().notNullable();
-    table.integer("skill_level").notNullable();
+    table.integer("skill_level");
     table.string("avatar")
     table.text("bio");
     table.string("birth_date");

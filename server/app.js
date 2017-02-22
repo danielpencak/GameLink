@@ -1,14 +1,19 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
 const app = express()
+const cookieParser = require('cookie-parser')
 
-if (process.env.NODE_ENV !== 'test') {
-  const logger = require('morgan')
-  app.use(logger('dev'))
-}
+app.disable('x-powered-by')
 
-app.use(bodyParser.json())
+require('dotenv').config();
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+app.use('/api/players', require('./routes/players'))
+
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.get('*', function(req, res) {

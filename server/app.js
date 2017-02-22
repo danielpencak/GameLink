@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/api/players', require('./routes/players'))
+app.use('/api/token', require('./routes/token'))
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 

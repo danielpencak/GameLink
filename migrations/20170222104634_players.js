@@ -1,10 +1,10 @@
 'use strict'
 
 exports.up = function(knex) {
-  return knex.schema.createTable('players', table => {
+  return knex.schema.createTable("players", table => {
     table.increments();
     table.string("username").unique().notNullable();
-    table.specificType('hashed_password', 'char(60)').notNullable();
+    table.specificType("hashed_password", 'char(60)').notNullable();
     table.string("email").unique().notNullable();
     table.integer("skill_level").notNullable();
     table.string("avatar")
@@ -15,5 +15,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('players')
+  return knex.schema.dropTable("players");
 };

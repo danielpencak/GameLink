@@ -14,9 +14,9 @@ exports.up = function(knex) {
     table.string('location_lng').notNullable();
     table.text('description');
     table.integer('owner_id')
-      .notNullable();
-      .references('players.id');
-      .onDelete('cascade');
+      .notNullable()
+      .references('players.id')
+      .onDelete('cascade')
       .index();
     table.boolean('has_board');
     table.timestamps(true, true);

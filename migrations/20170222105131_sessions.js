@@ -10,8 +10,8 @@ exports.up = function(knex) {
     table.integer('min_players').notNullable();
     table.integer('max_players').notNullable();
     table.string('location_name').notNullable();
-    table.string('location_lat').notNullable();
-    table.string('location_lng').notNullable();
+    table.decimal('location_lat', 10, 7).notNullable();
+    table.decimal('location_lng', 10, 7).notNullable();
     table.text('description');
     table.integer('owner_id')
       .notNullable()

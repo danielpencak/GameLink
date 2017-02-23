@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens*/
 'use strict';
 
 exports.up = function(knex) {
@@ -10,7 +11,7 @@ exports.up = function(knex) {
     table.integer('min_players').notNullable();
     table.integer('max_players').notNullable();
     table.timestamps(true, true);
-  })
+  });
 };
 
 exports.down = function(knex) {

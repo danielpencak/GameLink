@@ -1,5 +1,5 @@
 /* eslint-disable no-extra-parens*/
-'use strict'
+'use strict';
 
 exports.seed = ((knex) => {
   return knex('games').del()

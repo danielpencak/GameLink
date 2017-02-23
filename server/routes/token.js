@@ -8,8 +8,10 @@ const bcrypt = require('bcrypt-as-promised');
 const jwt = require('jsonwebtoken');
 const knex = require('../../knex');
 const { camelizeKeys } = require('humps');
+const ev = require('express-validation');
+const validations = require('../validations/token')
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   const { email, password } = req.body;
 
   let player;

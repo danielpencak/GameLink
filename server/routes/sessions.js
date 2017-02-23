@@ -31,10 +31,23 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  knex('sessions')
-    .where('id', req.params.id)
-    .first()
-    .then(session => res.send(camelizeKeys(session)))
+  let players;
+
+  knex('players_sessions')
+    .select(['players.username', 'players.avatar', 'players.id'])
+    .where('session_id', req.params.id)
+    .innerJoin('players', 'players.id', 'players_sessions.player_id')
+    .then(rows => {
+      players = rows;
+
+      return knex('sessions')
+        .where('id', req.params.id)
+        .first();
+    })
+    .then(session => {
+      session.players = players;
+      res.send(camelizeKeys(session));
+    })
     .catch(err => next(err));
 });
 

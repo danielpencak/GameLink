@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+
 'use strict';
 
 exports.up = function(knex) {
@@ -6,7 +8,7 @@ exports.up = function(knex) {
     table.integer('game_id')
       .references('games.id')
       .onDelete('cascade')
-      .notNullable()
+      .notNullable();
     table.integer('min_players').notNullable();
     table.integer('max_players').notNullable();
     table.string('location_name').notNullable();
@@ -20,7 +22,7 @@ exports.up = function(knex) {
       .index();
     table.boolean('has_board');
     table.timestamps(true, true);
-  })
+  });
 };
 
 exports.down = function(knex) {

@@ -1,5 +1,4 @@
 /* eslint-disable new-cap, arrow-parens */
-
 'use strict';
 
 const router = require('express').Router();
@@ -10,17 +9,7 @@ const ev = require('express-validation');
 const knex = require('../../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 const validations = require('../validations/players');
-
-const authorize = (req, res, next) => {
-  jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, payload) => {
-    if (err) {
-      return next(boom.create(401, 'Unauthorized'));
-    }
-
-    req.claim = payload;
-    next();
-  });
-};
+const authorize = require('../authorize');
 
 router.get('/', authorize, (req, res, next) => {
   knex('players')

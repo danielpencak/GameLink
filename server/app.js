@@ -18,6 +18,7 @@ app.use(cookieParser());
 
 app.use('/api/players', require('./routes/players'));
 app.use('/api/token', require('./routes/token'));
+app.use('/api/games', require('./routes/games'));
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
@@ -36,7 +37,7 @@ app.use((err, _req, res, _next) => {
   if (err.status) {
     return res
     .status(err.status)
-    .send(err);
+    .send(err.errors[0].messages[0]);
   }
 
   if (err.output && err.output.statusCode) {

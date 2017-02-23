@@ -7,12 +7,12 @@ exports.up = function(knex) {
     table.string('name').notNullable();
     table.text('description');
     table.string('image_url');
-    table.string('type');
+    table.string('type').notNullable();
     table.integer('game_id');
     table.integer('playing_time');
     table.integer('year_published');
-    table.integer('min_players');
-    table.integer('max_players');
+    table.integer('min_players').notNullable();
+    table.integer('max_players').notNullable();
     table.timestamps(true, true);
   });
 };

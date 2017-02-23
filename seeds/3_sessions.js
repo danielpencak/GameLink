@@ -1,3 +1,5 @@
+/* eslint-disable camelcase, arrow-parens */
+
 'use strict';
 
 exports.seed = knex => {

@@ -1,4 +1,6 @@
-'use strict'
+/* eslint-disable arrow-parens, camelcase, max-len */
+
+'use strict';
 
 exports.seed = knex => {
   return knex('players').del()

@@ -1,4 +1,4 @@
-/* eslint-disable no-extra-parens*/
+/* eslint-disable no-extra-parens, camelcase */
 'use strict';
 
 exports.seed = ((knex) => {
@@ -31,8 +31,8 @@ exports.seed = ((knex) => {
       }]);
     })
     .then(() => {
-     return knex.raw(
-       "SELECT setval('games_id_seq', (SELECT MAX(id) FROM games));"
-     );
-   });
+      return knex.raw(
+      "SELECT setval('games_id_seq', (SELECT MAX(id) FROM games));"
+      );
+    });
 });

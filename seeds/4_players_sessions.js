@@ -1,6 +1,7 @@
-'use strict'
+/* eslint-disable camelcase, arrow-parens, max-len */
+'use strict';
 
-exports.seed = ((knex) => {
+exports.seed = knex => {
   return knex('players_sessions').del()
     .then(() => {
       return knex('players_sessions').insert([{
@@ -18,8 +19,8 @@ exports.seed = ((knex) => {
       }]);
     })
     .then(() => {
-     return knex.raw(
-       "SELECT setval('players_sessions_id_seq', (SELECT MAX(id) FROM players_sessions));"
-     );
-   });
-});
+      return knex.raw(
+        "SELECT setval('players_sessions_id_seq', (SELECT MAX(id) FROM players_sessions));"
+      );
+    });
+};

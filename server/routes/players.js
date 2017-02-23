@@ -1,3 +1,5 @@
+/* eslint-disable new-cap, arrow-parens */
+
 'use strict';
 
 const router = require('express').Router();
@@ -17,8 +19,8 @@ const authorize = (req, res, next) => {
 
     req.claim = payload;
     next();
-  })
-}
+  });
+};
 
 router.get('/', authorize, (req, res, next) => {
   knex('players')
@@ -26,6 +28,7 @@ router.get('/', authorize, (req, res, next) => {
     .first()
     .then((row) => {
       const player = camelizeKeys(row);
+
       delete player.hashedPassword;
 
       res.send(player);
@@ -43,19 +46,19 @@ router.post('/', ev(validations.post), (req, res, next) => {
     .first()
     .then((row) => {
       if (row) {
-        throw boom.create(400, 'Email is already registered')
+        throw boom.create(400, 'Email is already registered');
       }
 
       return knex('players')
         .where('username', req.body.username)
-        .first()
+        .first();
     })
     .then((row) => {
       if (row) {
         throw boom.create(400, 'Username is already registered');
       }
 
-      return bcrypt.hash(req.body.password, 12)
+      return bcrypt.hash(req.body.password, 12);
     })
     .then((hashedPassword) => {
       const player = {
@@ -75,7 +78,7 @@ router.post('/', ev(validations.post), (req, res, next) => {
       const player = camelizeKeys(players[0]);
       const payload = {
         playerId: player.id
-      }
+      };
 
       const token = jwt.sign(payload, process.env.JWT_KEY, {
         expiresIn: '365 days'
@@ -92,6 +95,6 @@ router.post('/', ev(validations.post), (req, res, next) => {
       res.send(player);
     })
     .catch(err => next(err));
-})
+});
 
 module.exports = router;

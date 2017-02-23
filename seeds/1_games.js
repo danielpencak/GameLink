@@ -6,6 +6,7 @@ exports.seed = ((knex) => {
     .then(() => {
       return knex('games').insert([{
         id: 1,
+        game_id: 1,
         name: 'Monopoly',
         description: 'Let\'s conquer the real estate market',
         image_url: 'http://www.fillmurray.com/200/300',
@@ -14,6 +15,7 @@ exports.seed = ((knex) => {
         max_players: 4
       }, {
         id: 2,
+        game_id: 2,
         name: 'Scrabble',
         description: 'Let\'s make some words',
         image_url: 'http://www.fillmurray.com/150/250',
@@ -22,6 +24,7 @@ exports.seed = ((knex) => {
         max_players: 4
       }, {
         id: 3,
+        game_id: 3,
         name: 'Sorry!',
         description: 'I am not sorry!',
         image_url: 'http://www.fillmurray.com/100/200',

@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use('/api/players', require('./routes/players'));
 app.use('/api/token', require('./routes/token'));
 app.use('/api/games', require('./routes/games'));
+app.use('/api/sessions', require('./routes/sessions'));
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 

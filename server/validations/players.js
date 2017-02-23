@@ -19,6 +19,10 @@ module.exports.post = {
       .label('Password')
       .min(8)
       .trim()
-      .required()
+      .required(),
+    skillLevel: Joi.number()
+      .integer(),
+    bio: Joi.string(),
+    birthDate: Joi.string()
   }
 };

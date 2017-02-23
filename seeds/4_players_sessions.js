@@ -11,11 +11,11 @@ exports.seed = knex => {
       }, {
         id: 2,
         player_id: 2,
-        session_id: 2
+        session_id: 1
       }, {
         id: 3,
-        player_id: 2,
-        session_id: 1
+        player_id: 3,
+        session_id: 2
       }]);
     })
     .then(() => {

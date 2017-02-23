@@ -1,5 +1,4 @@
 /* eslint-disable new-cap, arrow-parens */
-
 'use strict';
 
 const router = require('express').Router();
@@ -9,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const knex = require('../../knex');
 const { camelizeKeys } = require('humps');
 const ev = require('express-validation');
-const validations = require('../validations/token')
+const validations = require('../validations/token');
 
 router.post('/', ev(validations.post), (req, res, next) => {
   const { email, password } = req.body;

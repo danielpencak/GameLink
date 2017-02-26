@@ -1,0 +1,21 @@
+.PlayerCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PlayerCard img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #666;
+  background-color: white;
+}
+
+.PlayerCard a {
+  color: white;
+}
+
+.PlayerCard li {
+  text-align: left;
+}

@@ -26,6 +26,7 @@ class Parent extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   toggleModal({ target }) {
@@ -84,6 +85,21 @@ class Parent extends Component {
       })
   }
 
+  handleLogout() {
+    axios.delete('/api/token')
+      .then(res => {
+        this.setState({
+          userId: '',
+          avatar: '',
+          username: ''
+        })
+        browserHistory.push('/');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   componentDidMount() {
     axios.get('/api/players')
       .then(res => {
@@ -101,7 +117,7 @@ class Parent extends Component {
   render() {
     return (
       <div>
-        <Header userId={this.state.userId} toggleModal={this.toggleModal} />
+        <Header userId={this.state.userId} toggleModal={this.toggleModal} username={this.state.username} handleLogout={this.handleLogout} />
         <div>
           {React.cloneElement(this.props.children)}
         </div>

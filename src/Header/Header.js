@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import './Header.css';
 import { Link } from 'react-router';
+import PlayerCard from '../PlayerCard/PlayerCard';
 
 export default function Header(props) {
   return (
@@ -14,7 +15,7 @@ export default function Header(props) {
       </Navbar.Header>
       <Navbar.Collapse>
          {
-          props.userId ? null
+          props.userId ? <PlayerCard username={props.username} handleLogout={props.handleLogout} />
           :
           <Nav pullRight>
             <NavItem eventKey={1} href="#">

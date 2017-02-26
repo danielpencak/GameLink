@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header/Header';
 import LoginModal from './LoginModal/LoginModal';
+import SignupModal from './SignupModal/SignupModal';
 import axios from 'axios';
 
 class Parent extends Component {
@@ -10,12 +11,20 @@ class Parent extends Component {
     this.state = {
       loginModalOpen: false,
       loginEmail: '',
-      loginPassword: ''
+      loginPassword: '',
+      signupPassword: '',
+      signupEmail: '',
+      signupUsername: '',
+      signupBio: '',
+      signupBirthDate: '',
+      signupConfirmPassword: '',
+      signupModalOpen: false
     }
 
     this.toggleModal = this.toggleModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
   }
 
   toggleModal({ target }) {
@@ -38,6 +47,33 @@ class Parent extends Component {
           loginModalOpen: false,
           loginEmail: '',
           loginPassword: ''
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  handleSignupSubmit(event) {
+    event.preventDefault();
+    axios.post('/api/players', {
+      email: this.state.signupEmail,
+      password: this.state.signupPassword,
+      confirmPassword: this.state.signupConfirmPassword,
+      username: this.state.signupUsername,
+      bio: this.state.signupBio,
+      birthDate: this.state.signupBirthDate
+    })
+      .then(res => {
+        const { id, avatar, username } = res.data;
+        this.setState({
+          userId: id,
+          avatar,
+          username,
+          signupModalOpen: false,
+          signupEmail: '',
+          signupPassword: '',
+          signupConfirmPassword: ''
         })
       })
       .catch(err => {
@@ -68,6 +104,11 @@ class Parent extends Component {
         </div>
         {
           this.state.loginModalOpen ? <LoginModal toggleModal={this.toggleModal} loginEmail={this.state.loginEmail} loginPassword={this.state.loginPassword} handleChange={this.handleChange} handleLoginSubmit={this.handleLoginSubmit} />
+          :null
+        }
+
+        {
+          this.state.signupModalOpen ? <SignupModal toggleModal={this.toggleModal} signupEmail={this.state.signupEmail} signupPassword={this.state.signupPassword} handleChange={this.handleChange} handleSignupSubmit={this.handleSignupSubmit} signupUsername={this.state.signupUsername} signupBio={this.state.signupBio} signupBirthDate={this.state.signupBirthDate} signupConfirmPassword={this.state.signupConfirmPassword} signupModalOpen={this.state.signupModalOpen} />
           :null
         }
       </div>

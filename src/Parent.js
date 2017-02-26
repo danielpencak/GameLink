@@ -45,6 +45,20 @@ class Parent extends Component {
       })
   }
 
+  componentDidMount() {
+    axios.get('/api/players')
+      .then(res => {
+        const { id, avatar, username } = res.data;
+        this.setState({
+          userId: id,
+          avatar,
+          username
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
   render() {
     return (
       <div>

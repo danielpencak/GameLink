@@ -1,13 +1,14 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import './Header.css';
+import { Link } from 'react-router';
 
 export default function Header(props) {
   return (
     <Navbar className='Navbar' inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">GameHub</a>
+          <Link to={props.userId ? '/dashboard' : '/'}>GameHub</Link>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

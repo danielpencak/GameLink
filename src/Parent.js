@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import LoginModal from './LoginModal/LoginModal';
 import SignupModal from './SignupModal/SignupModal';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 class Parent extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class Parent extends Component {
           loginEmail: '',
           loginPassword: ''
         })
+        browserHistory.push('/dashboard');
       })
       .catch(err => {
         console.log(err);
@@ -75,6 +77,7 @@ class Parent extends Component {
           signupPassword: '',
           signupConfirmPassword: ''
         })
+        browserHistory.push('/dashboard');
       })
       .catch(err => {
         console.log(err);

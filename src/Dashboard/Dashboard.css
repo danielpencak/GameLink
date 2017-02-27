@@ -1,0 +1,22 @@
+.Dashboard .list, .Dashboard .map, .Dashboard.container {
+  height: 100%;
+}
+
+.Dashboard .nearbyList {
+  overflow: scroll;
+}
+
+.Dashboard.container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.Dashboard .col-sm-6 {
+  padding: 0;
+}
+
+.Dashboard .row {
+  margin: 0;
+  height: 100%;
+}

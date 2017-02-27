@@ -9,7 +9,7 @@ exports.seed = ((knex) => {
         game_id: 1,
         name: 'Monopoly',
         description: 'Let\'s conquer the real estate market',
-        image_url: 'http://www.fillmurray.com/200/300',
+        image_url: 'https://cf.geekdo-images.com/images/pic2748156_md.jpg',
         type: 'board',
         min_players: 2,
         max_players: 4
@@ -18,7 +18,7 @@ exports.seed = ((knex) => {
         game_id: 2,
         name: 'Scrabble',
         description: 'Let\'s make some words',
-        image_url: 'http://www.fillmurray.com/150/250',
+        image_url: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcf.geekdo-images.com%2Fimages%2Fpic404651_md.jpg',
         type: 'board',
         min_players: 2,
         max_players: 4
@@ -27,7 +27,7 @@ exports.seed = ((knex) => {
         game_id: 3,
         name: 'Sorry!',
         description: 'I am not sorry!',
-        image_url: 'http://www.fillmurray.com/100/200',
+        image_url: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcf.geekdo-images.com%2Fimages%2Fpic266469_md.jpg',
         type: 'board',
         min_players: 2,
         max_players: 4

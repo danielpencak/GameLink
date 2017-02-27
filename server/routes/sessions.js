@@ -24,8 +24,37 @@ router.get('/', (req, res, next) => {
   const lng2 = lng + offsetInMeters / (111320 * Math.cos(lat));
 
   knex('sessions')
+    .select([
+      'games.description AS game_description',
+      'sessions.description AS session_description',
+      'sessions.game_id',
+      'has_board',
+      'sessions.id AS session_id',
+      'image_url',
+      'location_lat',
+      'location_lng',
+      'location_name',
+      'sessions.max_players AS max_players',
+      'sessions.min_players AS min_players',
+      'games.name AS game_name',
+      'owner_id',
+      'playing_time',
+      'type',
+      'year_published'
+    ])
     .whereBetween('location_lat', [Math.min(lat1, lat2), Math.max(lat1, lat2)])
     .whereBetween('location_lng', [Math.min(lng1, lng2), Math.max(lng1, lng2)])
+    .innerJoin('games', 'sessions.game_id', 'games.id')
+    .map(session => {
+      return knex('players_sessions')
+        .where('session_id', session.session_id)
+        .then(players => {
+          session.player_count = players.length; // eslint-disable-line
+
+          return session;
+        })
+        .catch(err => next(err));
+    })
     .then(sessions => res.send(camelizeKeys(sessions)))
     .catch(err => next(err));
 });

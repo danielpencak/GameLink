@@ -1,0 +1,21 @@
+.SessionCard {
+  display: flex;
+  height: 60px;
+  border-bottom: 1px solid #DDD;
+  padding-right: 5px;
+}
+
+.SessionCard img {
+  max-width: 100px;
+  object-fit: cover;
+}
+
+.SessionCard h2 {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.SessionCard > div:nth-child(2) {
+  flex: 1;
+  padding-left: 10px;
+}

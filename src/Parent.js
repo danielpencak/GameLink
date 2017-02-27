@@ -4,6 +4,7 @@ import LoginModal from './LoginModal/LoginModal';
 import SignupModal from './SignupModal/SignupModal';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import './Parent.css'
 
 class Parent extends Component {
   constructor(props) {
@@ -116,9 +117,9 @@ class Parent extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="Parent">
         <Header userId={this.state.userId} toggleModal={this.toggleModal} username={this.state.username} handleLogout={this.handleLogout} />
-        <div>
+        <div className="page">
           {React.cloneElement(this.props.children)}
         </div>
         {

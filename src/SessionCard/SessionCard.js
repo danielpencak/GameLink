@@ -1,5 +1,7 @@
 import React from 'react';
 import './SessionCard.css'
+import moment from 'moment'
+import { Glyphicon } from 'react-bootstrap';
 
 export default function SessionCard(props) {
   const { session } = props;
@@ -8,10 +10,14 @@ export default function SessionCard(props) {
       <img src={ session.imageUrl } alt={ session.gameName }/>
       <div>
         <h2>{ session.gameName }</h2>
-        <div>{ session.locationName }</div>
+        <p>{session.locationName } </p>
+        <p>{ moment(Number(session.time)).format('MMMM Do YYYY, h:mm a') }</p>
       </div>
       <div>
-        <h2>{ `${session.playerCount} of ${session.maxPlayers}` }</h2>
+        <h2>
+          <Glyphicon glyph="user" />
+          { `${session.playerCount} of ${session.maxPlayers}` }
+        </h2>
       </div>
     </div>
   )

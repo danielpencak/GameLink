@@ -15,6 +15,7 @@ exports.up = function(knex) {
     table.decimal('location_lat', 10, 7).notNullable();
     table.decimal('location_lng', 10, 7).notNullable();
     table.text('description');
+    table.bigInteger('time').notNullable();
     table.integer('owner_id')
       .notNullable()
       .references('players.id')

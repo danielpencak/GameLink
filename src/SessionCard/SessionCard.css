@@ -1,6 +1,6 @@
 .SessionCard {
   display: flex;
-  height: 60px;
+  height: 70px;
   border-bottom: 1px solid #DDD;
   padding-right: 5px;
 }
@@ -11,11 +11,21 @@
 }
 
 .SessionCard h2 {
-  font-size: 20px;
+  font-size: 18px;
   margin: 5px 0;
+}
+
+.SessionCard p {
+  margin: 0;
+  font-size: 13px;
 }
 
 .SessionCard > div:nth-child(2) {
   flex: 1;
   padding-left: 10px;
+}
+
+.SessionCard .glyphicon {
+  margin-right: 5px;
+  font-size: 16px;
 }

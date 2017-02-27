@@ -33,7 +33,10 @@ module.exports = {
         .label('Description')
         .trim(),
       hasBoard: Joi.boolean()
-        .label('Has Board')
+        .label('Has Board'),
+      time: Joi.number().integer()
+        .label('Time')
+        .required()
     }
   },
   patch: {
@@ -60,7 +63,9 @@ module.exports = {
         .label('Description')
         .trim(),
       hasBoard: Joi.boolean()
-        .label('Has Board')
+        .label('Has Board'),
+      time: Joi.number().integer()
+        .label('Time')
     }
   }
 };

@@ -40,7 +40,8 @@ router.get('/', (req, res, next) => {
       'owner_id',
       'playing_time',
       'type',
-      'year_published'
+      'year_published',
+      'sessions.time'
     ])
     .whereBetween('location_lat', [Math.min(lat1, lat2), Math.max(lat1, lat2)])
     .whereBetween('location_lng', [Math.min(lng1, lng2), Math.max(lng1, lng2)])

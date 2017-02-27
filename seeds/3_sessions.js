@@ -16,6 +16,7 @@ exports.seed = knex => {
           location_lng: -122.0337989,
           description: 'Lets Game yall!',
           owner_id: 1,
+          time: 1488223678518,
           has_board: true
         },
         {
@@ -28,6 +29,7 @@ exports.seed = knex => {
           location_lng: -122.3337989,
           description: 'Lets Game again yall!',
           owner_id: 2,
+          time: 1488223876518,
           has_board: true
         },
         {
@@ -40,6 +42,7 @@ exports.seed = knex => {
           location_lng: -122.0337989,
           description: 'Lets Game bros!',
           owner_id: 1,
+          time: 1488223679518,
           has_board: false
         }
       ]);

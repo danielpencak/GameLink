@@ -20,7 +20,8 @@ class Parent extends Component {
       signupBio: '',
       signupBirthDate: '',
       signupConfirmPassword: '',
-      signupModalOpen: false
+      signupModalOpen: false,
+      coords: {}
     }
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -101,6 +102,22 @@ class Parent extends Component {
       })
   }
 
+  componentWillMount() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.watchPosition(pos => {
+        const coords = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude
+        }
+
+        this.setState({ coords });
+      })
+    }
+    else {
+      console.log('Geolocation unavailable');
+    }
+  }
+
   componentDidMount() {
     axios.get('/api/players')
       .then(res => {
@@ -115,12 +132,13 @@ class Parent extends Component {
         console.log(err);
       })
   }
+
   render() {
     return (
       <div className="Parent">
         <Header userId={this.state.userId} toggleModal={this.toggleModal} username={this.state.username} handleLogout={this.handleLogout} />
         <div className="page">
-          {React.cloneElement(this.props.children)}
+          {React.cloneElement(this.props.children, { coords: this.state.coords })}
         </div>
         {
           this.state.loginModalOpen ? <LoginModal toggleModal={this.toggleModal} loginEmail={this.state.loginEmail} loginPassword={this.state.loginPassword} handleChange={this.handleChange} handleLoginSubmit={this.handleLoginSubmit} />

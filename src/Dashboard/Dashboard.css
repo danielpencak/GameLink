@@ -20,3 +20,32 @@
   margin: 0;
   height: 100%;
 }
+
+.Dashboard header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Dashboard header .glyphicon-refresh {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #007DC5;
+}
+
+.Dashboard header h2 {
+  margin: 10px 0;
+}
+
+.Dashboard .highlighted {
+  background-color: #DDD;
+  margin: 10px 0;
+}
+
+.Dashboard a {
+  color: inherit;
+}
+
+.Dashboard a:hover {
+  text-decoration: none;
+}

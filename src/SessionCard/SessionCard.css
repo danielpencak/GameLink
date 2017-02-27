@@ -5,6 +5,10 @@
   padding-right: 5px;
 }
 
+.SessionCard:hover {
+  opacity: .75;
+}
+
 .SessionCard img {
   max-width: 100px;
   object-fit: cover;

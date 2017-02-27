@@ -12,8 +12,8 @@ exports.seed = knex => {
           min_players: 2,
           max_players: 4,
           location_name: 'Galvanize',
-          location_lat: 47.5989617,
-          location_lng: -122.3337989,
+          location_lat: 48.5989617,
+          location_lng: -122.0337989,
           description: 'Lets Game yall!',
           owner_id: 1,
           has_board: true
@@ -24,8 +24,8 @@ exports.seed = knex => {
           min_players: 2,
           max_players: 3,
           location_name: 'Galvanize',
-          location_lat: 47.5989617,
-          location_lng: -122.3337989,
+          location_lat: 47.0989617,
+          location_lng: -121.3337989,
           description: 'Lets Game again yall!',
           owner_id: 2,
           has_board: true
@@ -36,8 +36,8 @@ exports.seed = knex => {
           min_players: 2,
           max_players: 4,
           location_name: 'Galvanize',
-          location_lat: 47.5989617,
-          location_lng: -122.3337989,
+          location_lat: 47.8989617,
+          location_lng: -122.0337989,
           description: 'Lets Game bros!',
           owner_id: 1,
           has_board: false

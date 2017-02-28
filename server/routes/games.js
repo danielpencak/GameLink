@@ -10,7 +10,7 @@ const authorize = require('../authorize');
 
 router.get('/', (req, res, next) => {
   knex('games')
-    .orderBy('name', 'DESC')
+    .orderBy('name', 'ASC')
     .then(games => res.send(camelizeKeys(games)))
     .catch(err => next(err));
 });

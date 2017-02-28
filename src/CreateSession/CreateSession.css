@@ -1,0 +1,43 @@
+.CreateSession {
+  padding: 20px 20%;
+}
+
+.CreateSession .form-group {
+  margin: 0;
+}
+
+.CreateSession .search {
+  border-radius: 0;
+}
+
+.CreateSession .searchResults {
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.CreateSession .gameResult {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #CCC;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.CreateSession .gameResult:hover {
+  background-color: #EEE;
+}
+
+.CreateSession .gameResult img {
+  max-width: 50px;
+  max-height: 49px;
+  object-fit: contain;
+}
+
+.CreateSession .gameResult div:first-child {
+  width: 50px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}

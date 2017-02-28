@@ -8,7 +8,6 @@ export default function SearchGames(props) {
     <div className="SearchGames">
       <FieldGroup
         type="text"
-        label="Game"
         name="searchTerm"
         placeholder="Start typing a name"
         value={ props.searchTerm }

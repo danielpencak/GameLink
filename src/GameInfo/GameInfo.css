@@ -1,0 +1,25 @@
+.GameInfo {
+  display: flex;
+}
+
+.GameInfo h2 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.GameInfo div {
+  padding-left: 10px;
+}
+
+.GameInfo h3 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.GameInfo span {
+  margin-right: 5px;
+}
+
+.GameInfo p {
+  font-style: italic;
+}

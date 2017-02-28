@@ -1,0 +1,41 @@
+.SearchGames .search {
+  border-radius: 0;
+}
+
+.SearchGames .gameResult {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #CCC;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.SearchGames .gameResult:hover {
+  background-color: #EEE;
+}
+
+.SearchGames .gameResult img {
+  min-width: 50px;
+  min-height: 49px;
+  max-width: 50px;
+  max-height: 49px;
+  object-fit: contain;
+}
+
+.SearchGames .searchResults {
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.SearchGames .gameResult div:first-child {
+  width: 50px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.SearchGames .form-group {
+  margin: 0;
+}

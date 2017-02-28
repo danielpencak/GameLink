@@ -3,6 +3,8 @@ import { Form, FormGroup, Checkbox, ControlLabel, FormControl, Button } from 're
 import axios from 'axios';
 import FieldGroup from '../Forms/FieldGroup';
 import './CreateSession.css'
+import SearchGames from './SearchGames'
+import GameInfo from '../GameInfo/GameInfo';
 
 class CreateSession extends Component {
   constructor(props) {
@@ -10,11 +12,14 @@ class CreateSession extends Component {
 
     this.state = {
       games: [],
-      searchTerm: ''
+      searchTerm: '',
+      showSearch: true
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.filterGames = this.filterGames.bind(this);
+    this.handleSelectGame = this.handleSelectGame.bind(this);
+    this.handleClearGame = this.handleClearGame.bind(this);
   }
 
   handleChange({ target }) {
@@ -23,12 +28,27 @@ class CreateSession extends Component {
     })
   }
 
+  handleSelectGame(game) {
+    this.setState({
+      game,
+      showSearch: false
+    });
+  }
+
   filterGames(game) {
     if (this.state.searchTerm.length < 3) {
       return false;
     }
     const exp = new RegExp(this.state.searchTerm, 'i');
     return game.name.match(exp);
+  }
+
+  handleClearGame() {
+    this.setState({
+      game: null,
+      showSearch: true,
+      searchTerm: ''
+    })
   }
 
   componentDidMount() {
@@ -45,30 +65,18 @@ class CreateSession extends Component {
     return (
       <div className="CreateSession">
         <h2>Create Session</h2>
-        <Form>
-          <FieldGroup
-            type="text"
-            label="Game"
-            name="searchTerm"
-            placeholder="Start typing a name"
-            value={ this.state.searchTerm }
-            onChange={ this.handleChange }
-            className="search"
-          />
-          <div className="searchResults">
-            {
-              this.state.games.filter(this.filterGames).map( game =>
-                <div className="gameResult" key={game.id}>
-                  <div>
-                    <img src={game.imageUrl} alt={game.name} onError={missingImage}/>
-                  </div>
-                  <div>
-                    {game.name}
-                  </div>
-                </div>
-              )
-            }
-          </div>
+          { this.state.showSearch ?
+            <SearchGames games={this.state.games} handleSelectGame={this.handleSelectGame} filterGames={this.filterGames} handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>
+
+            :
+
+            <div>
+              <GameInfo game={this.state.game} />
+              <Button bsStyle="primary" onClick={this.handleClearGame}>Change Game</Button>
+            </div>
+
+          }
+          <Form>
           <FieldGroup
             id="formControlsEmail"
             type="email"
@@ -138,10 +146,6 @@ class CreateSession extends Component {
       </div>
     )
   }
-}
-
-function missingImage(event) {
-  event.target.src='/img/not_found.png'
 }
 
 export default CreateSession;

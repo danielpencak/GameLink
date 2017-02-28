@@ -49,3 +49,8 @@
 .Dashboard a:hover {
   text-decoration: none;
 }
+
+.Dashboard .newSessionButton {
+  margin: 10px auto;
+  display: block;
+}

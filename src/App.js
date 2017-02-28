@@ -12,6 +12,7 @@ class App extends Component {
         <Route path='/' component={Parent}>
           <IndexRoute component={Home} />
           <Route path='/dashboard' component={Dashboard} />
+          <Route path='/session/create' component={Session} />
           <Route path='/session/:sessionId' component={Session} />
         </Route>
       </Router>

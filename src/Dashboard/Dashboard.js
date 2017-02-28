@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
+import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import axios from 'axios';
 import SessionCard from '../SessionCard/SessionCard';
 import Map from '../Map/Map';
@@ -27,7 +27,6 @@ class Dashboard extends Component {
   fetchNearbyGames() {
     axios.get(`/api/sessions?lat=${this.props.coords.lat || 47.6062}&lng=${this.props.coords.lng || -122.3321}&radius=50`)
       .then(({ data }) => {
-        console.log(data);
         this.setState({ sessions: data });
       })
       .catch(err => {
@@ -46,7 +45,18 @@ class Dashboard extends Component {
       <Grid className="Dashboard">
         <Row className="show-grid">
           <Col className="list" sm={6}>
-            <h2>My Sessions</h2>
+            <Link to="/session/create"><Button className="newSessionButton" bsStyle="primary" bsSize="large">New Session</Button></Link>
+            <header>
+              <h2>My Sessions</h2>
+            </header>
+            <div className="myList">
+              {
+                this.props.playerSessions.map(session =>
+                  <Link to={`/session/${session.sessionId}`} key={ session.sessionId }>
+                  <SessionCard session={ session } /> </Link>
+                )
+              }
+            </div>
             <header>
               <h2>Nearby Sessions</h2>
               <Glyphicon glyph="refresh" onClick={this.fetchNearbyGames} />
@@ -65,8 +75,8 @@ class Dashboard extends Component {
                   if (index === this.state.highlightedSession) {
                     return null;
                   }
-                  return <Link to={`/session/${session.sessionId}`}>
-                  <SessionCard key={ session.sessionId } session={ session } /> </Link>
+                  return <Link to={`/session/${session.sessionId}`} key={ session.sessionId }>
+                  <SessionCard session={ session } /> </Link>
                 })
               }
             </div>

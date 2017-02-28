@@ -60,7 +60,7 @@ class CreateSession extends Component {
               this.state.games.filter(this.filterGames).map( game =>
                 <div className="gameResult" key={game.id}>
                   <div>
-                    <img src={game.imageUrl} alt={game.name} onError={error}/>
+                    <img src={game.imageUrl} alt={game.name} onError={missingImage}/>
                   </div>
                   <div>
                     {game.name}
@@ -140,7 +140,7 @@ class CreateSession extends Component {
   }
 }
 
-function error(event) {
+function missingImage(event) {
   event.target.src='/img/not_found.png'
 }
 

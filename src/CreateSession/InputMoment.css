@@ -229,13 +229,5 @@
 }
 
 .m-input-moment .btn-save {
-    display: block;
-    margin-top: 10px;
-    width: 100%;
-    background-color: #1385e5;
-    padding: 12px 0;
-    text-align: center;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 3px
+    display: none;
 }

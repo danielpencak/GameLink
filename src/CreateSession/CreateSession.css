@@ -14,3 +14,7 @@
 .CreateSession span {
   width: 200px;
 }
+
+.CreateSession .glyphicon {
+  width: 20px;
+}

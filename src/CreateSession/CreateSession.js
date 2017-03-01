@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Checkbox, Button } from 'react-bootstrap'
+import { Form, FormGroup, Checkbox, Button, FormControl, ControlLabel } from 'react-bootstrap'
 import axios from 'axios';
 import FieldGroup from '../Forms/FieldGroup';
 import './CreateSession.css'
@@ -8,6 +8,8 @@ import GameInfo from '../GameInfo/GameInfo';
 import InputMoment from 'input-moment';
 import moment from 'moment';
 import './InputMoment.css';
+import SessionMap from './SessionMap'
+import { browserHistory } from 'react-router';
 
 class CreateSession extends Component {
   constructor(props) {
@@ -21,7 +23,10 @@ class CreateSession extends Component {
       game: {},
       sessionMinPlayers: 1,
       sessionMaxPlayers: 99,
-      moment: moment(Date.now())
+      moment: moment(Date.now()),
+      locationName: '',
+      locationCoords: {},
+      description: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,6 +35,8 @@ class CreateSession extends Component {
     this.handleClearGame = this.handleClearGame.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.setLocation = this.setLocation.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
   }
 
   handleChange({ target }) {
@@ -82,6 +89,39 @@ class CreateSession extends Component {
       })
   }
 
+  setLocation(place) {
+    this.setState({
+      locationName: place.label,
+      locationCoords: place.location
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const { game, sessionMinPlayers, sessionMaxPlayers, locationName, locationCoords, hasBoard, moment, description } = this.state;
+    const session = {
+      gameId: game.id,
+      minPlayers: sessionMinPlayers,
+      maxPlayers: sessionMaxPlayers,
+      locationName,
+      locationLat: locationCoords.lat,
+      locationLng: locationCoords.lng,
+      time: moment.unix(),
+      description,
+      hasBoard
+    }
+    axios.post('/api/sessions', session)
+      .then(({ data }) => {
+        data.imageUrl = this.state.game.imageUrl;
+        data.gameName = this.state.game.name;
+        this.props.addSession(data);
+        browserHistory.push('/dashboard');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return (
       <div className="CreateSession">
@@ -100,12 +140,16 @@ class CreateSession extends Component {
           }
           {
             this.state.gameSelected ?
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <h3>Miscellaneous</h3>
               <FormGroup>
                 <Checkbox checked={this.state.hasBoard} onChange={this.handleCheckboxChange}>
                   I have the game materials
                 </Checkbox>
+              </FormGroup>
+              <FormGroup>
+                <ControlLabel>Description</ControlLabel>
+                <FormControl componentClass="textarea" placeholder="e.g. &#34;Let&#39;s game and have some beers!&#34;" value={this.state.description} onChange={this.handleChange} name="description"></FormControl>
               </FormGroup>
               <h3>Players</h3>
               <FormGroup>
@@ -125,6 +169,10 @@ class CreateSession extends Component {
               <h3>Time</h3>
               <FormGroup>
                 <InputMoment moment={this.state.moment} onChange={this.onChange} />
+              </FormGroup>
+              <h3>Place</h3>
+              <FormGroup>
+                <SessionMap coords={this.props.coords} locationName={this.state.locationName} locationCoords={this.state.locationCoords} setLocation={this.setLocation} />
               </FormGroup>
               <Button type="submit" bsStyle="primary">
                 Submit

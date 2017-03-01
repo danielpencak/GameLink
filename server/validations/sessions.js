@@ -21,14 +21,12 @@ module.exports = {
         .label('Location Name')
         .required()
         .trim(),
-      locationLat: Joi.string()
+      locationLat: Joi.number()
         .label('Location Latitude')
-        .required()
-        .trim(),
-      locationLng: Joi.string()
+        .required(),
+      locationLng: Joi.number()
         .label('Location Longitude')
-        .required()
-        .trim(),
+        .required(),
       description: Joi.string()
         .label('Description')
         .trim(),
@@ -53,12 +51,10 @@ module.exports = {
       locationName: Joi.string()
         .label('Location Name')
         .trim(),
-      locationLat: Joi.string()
-        .label('Location Latitude')
-        .trim(),
-      locationLng: Joi.string()
-        .label('Location Longitude')
-        .trim(),
+      locationLat: Joi.number()
+        .label('Location Latitude'),
+      locationLng: Joi.number()
+        .label('Location Longitude'),
       description: Joi.string()
         .label('Description')
         .trim(),

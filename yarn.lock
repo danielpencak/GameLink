@@ -1214,7 +1214,7 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.2.0, classnames@^2.2.5:
+classnames@^2.1.3, classnames@^2.2.0, classnames@^2.2.3, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -3519,6 +3519,10 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
+lodash.debounce@^4.0.6:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -4604,6 +4608,13 @@ react-dom@^15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-geosuggest@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-geosuggest/-/react-geosuggest-2.1.0.tgz#c27701359469a6afd2e7298a9bbe6c5615bbee32"
+  dependencies:
+    classnames "^2.2.3"
+    lodash.debounce "^4.0.6"
+
 react-google-maps@^4.11.0:
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/react-google-maps/-/react-google-maps-4.11.0.tgz#077a7d937685b5ff359d0b6ebb54505adec68712"
@@ -4616,6 +4627,12 @@ react-google-maps@^4.11.0:
     react-prop-types-element-of-type "^2.1.0"
     scriptjs "^2.5.8"
     warning "^2.1.0"
+
+react-google-places-suggest@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-google-places-suggest/-/react-google-places-suggest-2.0.1.tgz#4807d71be53831596887adc1c7b7443b58d51aaa"
+  dependencies:
+    classnames "^2.1.3"
 
 react-input-slider@^1.5.0, react-input-slider@^1.6.0:
   version "1.6.0"

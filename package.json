@@ -32,6 +32,7 @@
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
+    "react-geosuggest": "^2.1.0",
     "react-google-maps": "^4.11.0",
     "react-input-slider": "^1.6.0",
     "react-router": "^3.0.2",

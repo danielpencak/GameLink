@@ -30,6 +30,7 @@ class Parent extends Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.addSession = this.addSession.bind(this);
   }
 
   toggleModal({ target }) {
@@ -119,6 +120,11 @@ class Parent extends Component {
     }
   }
 
+  addSession(session) {
+    const playerSessions = this.state.playerSessions.concat(session);
+    this.setState({ playerSessions });
+  }
+
   componentDidMount() {
     axios.get('/api/players')
       .then(res => {
@@ -143,7 +149,7 @@ class Parent extends Component {
       <div className="Parent">
         <Header userId={this.state.userId} toggleModal={this.toggleModal} username={this.state.username} handleLogout={this.handleLogout} />
         <div className="page">
-          {React.cloneElement(this.props.children, { userId: this.state.userId, coords: this.state.coords, playerSessions: this.state.playerSessions })}
+          {React.cloneElement(this.props.children, { userId: this.state.userId, coords: this.state.coords, playerSessions: this.state.playerSessions, addSession: this.addSession })}
         </div>
         {
           this.state.loginModalOpen ? <LoginModal toggleModal={this.toggleModal} loginEmail={this.state.loginEmail} loginPassword={this.state.loginPassword} handleChange={this.handleChange} handleLoginSubmit={this.handleLoginSubmit} />

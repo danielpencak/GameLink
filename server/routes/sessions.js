@@ -82,11 +82,27 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/', authorize, ev(validations.post), (req, res, next) => {
-  const { gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, hasBoard } = req.body;
+  const { gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, hasBoard, time } = req.body;
+  let newSession;
 
   knex('sessions')
-    .insert(decamelizeKeys({ gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, ownerId: req.claim.playerId, hasBoard }), '*')
-    .then(session => res.send(camelizeKeys(session[0])))
+    .insert(decamelizeKeys({ gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, ownerId: req.claim.playerId, hasBoard, time }), '*')
+    .then(session => {
+      newSession = session[0];
+      newSession.playerCount = 1;
+      newSession.sessionId = newSession.id;
+
+      const playerRow = {
+        sessionId: newSession.id,
+        playerId: req.claim.playerId
+      };
+
+      return knex('players_sessions')
+        .insert(decamelizeKeys(playerRow));
+    })
+    .then(() => {
+      return res.send(camelizeKeys(newSession));
+    })
     .catch(err => next(err));
 });
 

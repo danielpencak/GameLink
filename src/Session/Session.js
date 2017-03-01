@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import GameInfo from '../GameInfo/GameInfo';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import './Session.css';
 import moment from 'moment';
 import SessionMap from '../CreateSession/SessionMap';
@@ -21,6 +21,7 @@ import { browserHistory } from 'react-router';
 
     this.handleDeletePlayer = this.handleDeletePlayer.bind(this);
     this.handleJoinSession = this.handleJoinSession.bind(this);
+    this.joinButton = this.joinButton.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +45,23 @@ import { browserHistory } from 'react-router';
       .catch(err => {
         console.log(err);
       })
+  }
+
+  joinButton() {
+    const playerIsInSession = this.state.players.reduce((acc, player) => {
+      if (player.id === this.props.userId) {
+        acc = true;
+      }
+      return acc;
+    }, false)
+
+    if (playerIsInSession) {
+      return <Button bsStyle="danger" onClick={() => { this.handleDeletePlayer(this.props.userId)}}>Leave Session</Button>
+    }
+    if (this.state.players.length >= this.state.session.maxPlayers) {
+      return <Button bsStyle="primary" disabled>Session Full</Button>
+    }
+    return <Button bsStyle="primary" onClick={this.handleJoinSession}>Join Session</Button>
   }
 
   handleJoinSession() {
@@ -99,6 +117,7 @@ import { browserHistory } from 'react-router';
             <div className="playerHeader">
               <h2>Players</h2>
               <h2>
+                <Glyphicon glyph="user" />
                 {`${this.state.players.length} / ${this.state.session.maxPlayers}`}
               </h2>
             </div>
@@ -107,17 +126,7 @@ import { browserHistory } from 'react-router';
                 return <PlayerCard username={player.username} key={player.id} isOwner={this.props.userId === this.state.session.ownerId} handleDeletePlayer={this.handleDeletePlayer} playerId={player.id} />
               })
             }
-            {
-              this.state.players.reduce((acc, player) => {
-                if (player.id === this.props.userId) {
-                  acc = true;
-                }
-                return acc;
-              }, false) ?
-              <Button bsStyle="danger" onClick={() => { this.handleDeletePlayer(this.props.userId)}}>Leave Session</Button>
-              :
-              <Button bsStyle="primary" onClick={this.handleJoinSession}>Join Session</Button>
-            }
+            {this.joinButton()}
           </Col>
         </Row>
       </Grid>

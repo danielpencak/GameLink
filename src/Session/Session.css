@@ -27,3 +27,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Session h2 .glyphicon {
+  font-size: 25px;
+  margin-right: 10px;
+}

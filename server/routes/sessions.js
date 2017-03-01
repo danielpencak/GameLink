@@ -133,7 +133,7 @@ router.post('/', authorize, ev(validations.post), (req, res, next) => {
 });
 
 router.patch('/:id', authorize, ev(validations.patch), (req, res, next) => {
-  const { gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, hasBoard } = req.body;
+  const { gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, hasBoard, time } = req.body;
 
   knex('sessions')
     .where('id', req.params.id)
@@ -144,7 +144,7 @@ router.patch('/:id', authorize, ev(validations.patch), (req, res, next) => {
       }
 
       return knex('sessions')
-        .update(decamelizeKeys({ gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, hasBoard }))
+        .update(decamelizeKeys({ gameId, minPlayers, maxPlayers, locationName, locationLat, locationLng, description, hasBoard, time }))
         .returning('*')
         .where('id', req.params.id);
     })

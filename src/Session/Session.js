@@ -111,7 +111,7 @@ import { browserHistory } from 'react-router';
             <p>{moment(Number(this.state.session.time)).format('MMMM Do, hh:mma')}</p>
             <p>{this.state.session.locationName}</p>
             <SessionMap locationCoords={this.state.session.locationCoords} locationName={this.state.session.locationName}/>
-            <Button bsStyle="primary">Update Session</Button>
+            <Button bsStyle="primary" onClick={() => {browserHistory.push(`/session/${this.props.params.sessionId}/edit`)}}>Update Session</Button>
           </Col>
           <Col sm={3}>
             <div className="playerHeader">

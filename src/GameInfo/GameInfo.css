@@ -1,5 +1,6 @@
 .GameInfo {
   display: flex;
+  height: 150px;
 }
 
 .GameInfo h2 {
@@ -22,4 +23,8 @@
 
 .GameInfo p {
   font-style: italic;
+}
+
+.GameInfo img {
+  max-height: 150px;
 }

@@ -2,13 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 15px 0;
 }
 
 .PlayerCard img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid #666;
+  border: 1px solid #CCC;
   background-color: white;
 }
 
@@ -18,4 +19,14 @@
 
 .PlayerCard li {
   text-align: left;
+}
+
+.PlayerCard p {
+  margin: 0 0 0 20px;
+  flex: 1;
+  font-size: 18px;
+}
+
+.PlayerCard .glyphicon {
+  color: #F44336;
 }

@@ -6,4 +6,5 @@
 
 .Parent .page {
   flex: 1;
+  overflow: hidden;
 }

@@ -57,7 +57,22 @@ router.delete('/:sessionId/:playerId/', authorize, (req, res, next) => {
         .where('player_id', playerId)
         .where('session_id', sessionId);
     })
-    .then(response => res.send(response[0]))
+    .then(() => {
+      return knex('players_sessions')
+        .where('session_id', sessionId);
+    })
+    .then((rows) => {
+      if (rows.length) {
+        return res.send(true);
+      }
+
+      return knex('sessions')
+        .del('*')
+        .where('id', sessionId);
+    })
+    .then(() => {
+      return res.send(true);
+    })
     .catch(err => next(err));
 });
 

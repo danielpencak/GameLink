@@ -1,0 +1,29 @@
+.Session.container {
+  margin: 0;
+  height: 100%;
+  overflow: scroll;
+  width: 100%;
+}
+
+.Session button {
+  width: 100%;
+  border-radius: 0;
+}
+
+.Session .col-sm-9, .Session .col-sm-3 {
+  overflow: scroll;
+  height: 100%;
+}
+
+.Session .row {
+  height: 100%;
+}
+
+.Session .col-sm-3 {
+  border-left: 1px solid #CCC;
+}
+
+.Session .playerHeader {
+  display: flex;
+  justify-content: space-between;
+}

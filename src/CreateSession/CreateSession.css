@@ -1,5 +1,7 @@
 .CreateSession {
   padding: 20px 20%;
+  overflow: scroll;
+  height: 100%;
 }
 
 .CreateSession button {

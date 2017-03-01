@@ -10,6 +10,7 @@ import moment from 'moment';
 import './InputMoment.css';
 import SessionMap from './SessionMap'
 import { browserHistory } from 'react-router';
+import Geosuggest from 'react-geosuggest';
 
 class CreateSession extends Component {
   constructor(props) {
@@ -172,7 +173,8 @@ class CreateSession extends Component {
               </FormGroup>
               <h3>Place</h3>
               <FormGroup>
-                <SessionMap coords={this.props.coords} locationName={this.state.locationName} locationCoords={this.state.locationCoords} setLocation={this.setLocation} />
+                <Geosuggest onSuggestSelect={(place) => {this.setLocation(place)}}/>
+                <SessionMap coords={this.props.coords} locationName={this.state.locationName} locationCoords={this.state.locationCoords} />
               </FormGroup>
               <Button type="submit" bsStyle="primary">
                 Submit

@@ -71,11 +71,37 @@ router.get('/:id', (req, res, next) => {
       players = rows;
 
       return knex('sessions')
-        .where('id', req.params.id)
+        .select([
+          'sessions.id AS id',
+          'sessions.min_players',
+          'sessions.max_players',
+          'games.min_players AS game_min_players',
+          'games.max_players AS game_max_players',
+          'sessions.location_name',
+          'sessions.location_lat',
+          'sessions.location_lng',
+          'sessions.description',
+          'sessions.owner_id',
+          'sessions.time',
+          'sessions.has_board',
+          'games.id AS game_id',
+          'games.name AS game_name',
+          'games.description AS game_description',
+          'games.image_url AS game_image_url',
+          'games.type AS game_type'
+        ])
+        .where('sessions.id', req.params.id)
+        .innerJoin('games', 'sessions.game_id', 'games.id')
         .first();
     })
     .then(session => {
       session.players = players;
+      session.locationCoords = {
+        lat: Number(session.location_lat),
+        lng: Number(session.location_lng)
+      };
+      delete session.location_lat;
+      delete session.location_lng;
       res.send(camelizeKeys(session));
     })
     .catch(err => next(err));

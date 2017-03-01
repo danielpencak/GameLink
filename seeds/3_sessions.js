@@ -28,7 +28,7 @@ exports.seed = knex => {
           location_lat: 47.5989617,
           location_lng: -122.3337989,
           description: 'Lets Game again yall!',
-          owner_id: 2,
+          owner_id: 3,
           time: 1488223876518,
           has_board: true
         },
@@ -41,7 +41,7 @@ exports.seed = knex => {
           location_lat: 47.8989617,
           location_lng: -122.0337989,
           description: 'Lets Game bros!',
-          owner_id: 1,
+          owner_id: 3,
           time: 1488223679518,
           has_board: false
         }

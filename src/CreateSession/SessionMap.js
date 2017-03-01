@@ -21,6 +21,9 @@ export default function SessionMap(props) {
             }
             googleMapElement={
               <GoogleMap
+                defaultOptions={{
+                  scrollwheel: false
+                }}
                 defaultZoom={18}
                 center={{ lat: props.locationCoords.lat, lng: props.locationCoords.lng}}>
                 <Marker position={props.locationCoords} />

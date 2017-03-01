@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Checkbox, Button, FormControl, ControlLabel } from 'react-bootstrap'
 import axios from 'axios';
-import FieldGroup from '../Forms/FieldGroup';
 import './CreateSession.css'
 import SearchGames from './SearchGames'
 import GameInfo from '../GameInfo/GameInfo';
@@ -24,7 +23,7 @@ class CreateSession extends Component {
       game: {},
       sessionMinPlayers: 1,
       sessionMaxPlayers: 99,
-      moment: moment(Date.now()),
+      moment: moment(),
       locationName: '',
       locationCoords: {},
       description: ''
@@ -47,8 +46,9 @@ class CreateSession extends Component {
   }
 
   // Required by InputMoment
-  onChange(moment) {
-    this.setState({ moment });
+  onChange(time) {
+    console.log(time.unix());
+    this.setState({ moment: time });
   }
 
   handleCheckboxChange() {
@@ -107,7 +107,7 @@ class CreateSession extends Component {
       locationName,
       locationLat: locationCoords.lat,
       locationLng: locationCoords.lng,
-      time: moment.unix(),
+      time: moment.unix() * 1000,
       description,
       hasBoard
     }

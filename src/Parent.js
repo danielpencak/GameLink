@@ -37,11 +37,13 @@ class Parent extends Component {
 
   updateSession(session) {
     const playerSessions = this.state.playerSessions.map(playerSession => {
-      if (playerSession.id === session.id) {
+      if (playerSession.sessionId === session.id) {
         return session;
       }
       return playerSession;
     })
+
+    this.setState({ playerSessions })
   }
 
   toggleModal({ target }) {

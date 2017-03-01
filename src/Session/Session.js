@@ -27,7 +27,6 @@ import { browserHistory } from 'react-router';
   componentDidMount() {
     axios.get(`/api/sessions/${this.props.params.sessionId}`)
       .then(({ data }) => {
-        console.log(data);
         const game = {
           maxPlayers: data.gameMaxPlayers,
           minPlayers: data.gameMinPlayers,

@@ -32,8 +32,8 @@ class UpdateSession extends Component {
           name: data.gameName,
           id: data.gameId
         }
-        console.log(game);
         this.setState({
+          playerCount: data.players.length,
           hasBoard: data.hasBoard,
           sessionMaxPlayers: data.maxPlayers,
           sessionMinPlayers: data.minPlayers,
@@ -83,13 +83,14 @@ class UpdateSession extends Component {
       locationName,
       locationLat: locationCoords.lat,
       locationLng: locationCoords.lng,
-      time: time.unix(),
+      time: time.unix() * 1000,
       description,
       hasBoard
     }
-    console.log(session);
     axios.patch(`/api/sessions/${this.props.params.sessionId}`, session)
       .then(({ data }) => {
+        data.playerCount = this.state.playerCount;
+        data.sessionId = data.id;
         data.imageUrl = this.state.game.imageUrl;
         data.gameName = this.state.game.name;
         this.props.updateSession(data);

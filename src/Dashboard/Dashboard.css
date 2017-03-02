@@ -35,7 +35,7 @@
 .Dashboard header .glyphicon-refresh {
   margin-right: 20px;
   font-size: 20px;
-  color: #007DC5;
+  color: #99DBF2;
   position: absolute;
   right: 0;
   top: 20px;
@@ -66,18 +66,26 @@
 }
 
 .Dashboard .newSessionButton {
-  width: 100%;
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   border-radius: 0;
-  display: block;
-  background-color: #3972AB;
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
+  background-color: #99DBF2;
   color: white;
   font-size: 20px;
   font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Dashboard .newSessionButton .glyphicon {
-  margin-left: 5px;
+  position: static;
+  margin-bottom: 4px;
+}
+
+.Dashboard .newSessionButton:hover {
+  font-size: 25px;
 }

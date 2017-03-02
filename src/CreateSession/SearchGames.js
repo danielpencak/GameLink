@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchGames.css';
-import { Button, FormGroup, FormControl } from 'react-bootstrap';
+import { FormGroup, FormControl } from 'react-bootstrap';
 
 export default function SearchGames(props) {
   return (

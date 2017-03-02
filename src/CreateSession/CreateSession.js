@@ -67,7 +67,7 @@ class CreateSession extends Component {
   }
 
   filterGames(game) {
-    if (this.state.searchTerm.length < 3) {
+    if (this.state.searchTerm.length < 2) {
       return false;
     }
     const exp = new RegExp(this.state.searchTerm, 'i');
@@ -150,7 +150,7 @@ class CreateSession extends Component {
             }
             {
               this.props.isUpdated || !this.state.gameSelected ? null :
-              <a onClick={this.handleClearGame}>Change Game</a>
+              <a onClick={this.handleClearGame}>Change</a>
             }
           </div>
           {

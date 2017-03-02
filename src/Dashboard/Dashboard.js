@@ -47,13 +47,11 @@ class Dashboard extends Component {
           <Col className="list" md={6} lg={5}>
             <header>
               <h2>My Sessions</h2>
+              <Link to="/session/create" className="newSessionButton">
+                <Glyphicon glyph="plus" />
+              </Link>
             </header>
             <div className="myList">
-              <div>
-                <Link to="/session/create" className="newSessionButton">
-                  NEW <Glyphicon glyph="plus" />
-                </Link>
-              </div>
               {
                 this.props.playerSessions.map(session =>
                   <Link to={`/session/${session.sessionId}`} key={ session.sessionId }>

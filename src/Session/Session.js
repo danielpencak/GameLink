@@ -31,7 +31,8 @@ import { browserHistory } from 'react-router';
           maxPlayers: data.gameMaxPlayers,
           minPlayers: data.gameMinPlayers,
           description: data.gameDescription,
-          imageUrl: data.gameImageUrl
+          imageUrl: data.gameImageUrl,
+          name: data.gameName
         }
         const players = data.players;
         delete data.players;
@@ -103,26 +104,35 @@ import { browserHistory } from 'react-router';
       <Grid className="Session">
         <Row>
           <Col sm={9}>
-            <h2>Game</h2>
-            <GameInfo game={this.state.game}/>
-            <h2>Session Details</h2>
-            <p>{this.state.session.description}</p>
-            <p>{moment(Number(this.state.session.time)).format('MMMM Do, hh:mma')}</p>
-            <p>{this.state.session.locationName}</p>
-            <SessionMap locationCoords={this.state.session.locationCoords} locationName={this.state.session.locationName}/>
-            {
-              this.state.session.ownerId === this.props.userId ?
-                <Button bsStyle="primary" onClick={() => {browserHistory.push(`/session/${this.props.params.sessionId}/edit`)}}>Update Session</Button>
-                : null
-            }
+            <div className="sessionRow">
+              <Glyphicon className="big" glyph="tower" />
+              <GameInfo game={this.state.game}/>
+            </div>
+            <div className="sessionRow">
+              <Glyphicon className="big" glyph="envelope" />
+              <p className="text">{this.state.session.description}</p>
+            </div>
+            <div className="sessionRow">
+              <Glyphicon className="big" glyph="time" />
+              <p className="text">{moment(Number(this.state.session.time)).format('MMMM Do, hh:mma')}</p>
+            </div>
+            <div className="sessionRow">
+              <Glyphicon className="big" glyph="map-marker" />
+              <p className="text">{this.state.session.locationName}</p>
+            </div>
+              <SessionMap locationCoords={this.state.session.locationCoords} locationName={this.state.session.locationName}/>
+              {
+                this.state.session.ownerId === this.props.userId ?
+                  <Button bsStyle="primary" className="updateButton" onClick={() => {browserHistory.push(`/session/${this.props.params.sessionId}/edit`)}}>Update Session</Button>
+                  : null
+              }
           </Col>
           <Col sm={3}>
             <div className="playerHeader">
-              <h2>Players</h2>
-              <h2>
+              <h3>
                 <Glyphicon glyph="user" />
                 {`${this.state.players.length} / ${this.state.session.maxPlayers}`}
-              </h2>
+              </h3>
             </div>
             {
               this.state.players.map(player => {

@@ -136,31 +136,29 @@ class CreateSession extends Component {
       <div className="CreateSession">
         {
           this.props.isUpdated ?
-          <h2>Update Session</h2>
+          <h1>Update Session</h1>
           :
-          <h2>Create Session</h2>
+          <h1>Create Session</h1>
         }
         <div className="formWrapper">
-          { !this.state.gameSelected ?
-            <SearchGames games={this.state.games} handleSelectGame={this.handleSelectGame} filterGames={this.filterGames} handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>
+          <div className="formCategory">
+            <Glyphicon className="big" glyph="tower" />
+            { !this.state.gameSelected
+              ? <SearchGames games={this.state.games} handleSelectGame={this.handleSelectGame} filterGames={this.filterGames} handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>
 
-            :
-
-            <div>
-              <GameInfo game={this.props.game || this.state.game} />
-              {
-                this.props.isUpdated ? null :
-                <Button bsStyle="primary" onClick={this.handleClearGame}>Change Game</Button>
-              }
-            </div>
-
-          }
+              : <GameInfo game={this.props.game || this.state.game} />
+            }
+            {
+              this.props.isUpdated || !this.state.gameSelected ? null :
+              <a onClick={this.handleClearGame}>Change Game</a>
+            }
+          </div>
           {
             this.state.gameSelected ?
             <Form onSubmit={this.props.handleSubmit || this.handleSubmit}>
 
             <div className="formCategory">
-              <Glyphicon glyph="map-marker" />
+              <Glyphicon className="big" glyph="map-marker" />
               <div className="categoryWrapper">
                 <h3>Place</h3>
                 <FormGroup>
@@ -195,7 +193,7 @@ class CreateSession extends Component {
             </div>
 
             <div className="formCategory">
-              <Glyphicon glyph="time" />
+              <Glyphicon className="big" glyph="time" />
               <div className="categoryWrapper">
                 <h3>Time</h3>
                 <FormGroup>
@@ -205,7 +203,7 @@ class CreateSession extends Component {
             </div>
 
             <div className="formCategory">
-              <Glyphicon glyph="user" />
+              <Glyphicon className="big" glyph="user" />
               <div className="categoryWrapper">
                 <h3>Players</h3>
                 <FormGroup>
@@ -226,7 +224,7 @@ class CreateSession extends Component {
             </div>
 
             <div className="formCategory">
-              <Glyphicon glyph="tower" />
+              <Glyphicon className="big" glyph="ok" />
               <div className="categoryWrapper">
                 <h3>Miscellaneous</h3>
                 <FormGroup>

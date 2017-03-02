@@ -1,6 +1,7 @@
 .GameInfo {
   display: flex;
   height: 150px;
+  flex: 1;
 }
 
 .GameInfo h2 {

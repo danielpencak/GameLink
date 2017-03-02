@@ -17,21 +17,16 @@ export default function SearchGames(props) {
         {
           props.games.filter(props.filterGames).map( game =>
             <div onClick={() => {props.handleSelectGame(game)}} className="gameResult" key={game.id}>
-              <div>
+              <div className="imageWrapper">
                 <img src={game.imageUrl} alt={game.name} onError={missingImage}/>
               </div>
-              <div>
+              <div className="gameName">
                 {game.name}
               </div>
             </div>
           )
         }
       </div>
-      {
-        props.searchTerm.length > 1 ?
-        <Button bsStyle="primary">Add New</Button>
-        :null
-      }
     </div>
   );
 }

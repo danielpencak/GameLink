@@ -1,12 +1,19 @@
+.SearchGames {
+  width: 100%;
+}
+
 .SearchGames .search {
   border-radius: 0;
+  width: 100%;
 }
 
 .SearchGames .searchField {
   padding: 0;
+  width: 100%;
 }
 
 .SearchGames .gameResult {
+  height: 60px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #CCC;
@@ -15,14 +22,12 @@
 }
 
 .SearchGames .gameResult:hover {
-  background-color: #EEE;
+  transform: scale(1.01);;
 }
 
 .SearchGames .gameResult img {
-  min-width: 50px;
-  min-height: 49px;
-  max-width: 50px;
-  max-height: 49px;
+  max-width: 40px;
+  max-height: 40px;
   object-fit: contain;
 }
 
@@ -33,11 +38,16 @@
   overflow: scroll;
 }
 
-.SearchGames .gameResult div:first-child {
-  width: 50px;
+.SearchGames .imageWrapper {
+  width: 70px;
   margin-right: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+}
+
+.SearchGames .gameName {
+  font-size: 18px;
 }
 
 .SearchGames .form-group {

@@ -46,7 +46,7 @@
   padding: 20px 0;
   text-align: center;
   width: 100%;
-  text-transform: uppercase;
+  font-weight: 200;
   font-size: 20px;
   border-bottom: 1px solid #DDD;
   letter-spacing: 1px;
@@ -75,6 +75,7 @@
   line-height: 60px;
   color: white;
   font-size: 20px;
+  font-weight: 200;
 }
 
 .Dashboard .newSessionButton .glyphicon {

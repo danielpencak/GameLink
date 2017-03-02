@@ -36,8 +36,15 @@
 }
 
 .m-calendar .current-day {
-    color: #222;
-    font-weight: 700
+    background-color: #F44336;
+    color: white;
+    font-weight: 800;
+}
+
+.m-calendar .current-day:hover {
+    background-color: #F44336;
+    color: white;
+    border: 0;
 }
 
 .m-calendar .next-month, .m-calendar .prev-month {

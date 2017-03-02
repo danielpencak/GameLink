@@ -1,5 +1,5 @@
 .CreateSession {
-  padding: 20px 10%;
+  padding: 20px 15%;
   overflow: scroll;
   height: 100%;
 }
@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.CreateSession .formCategory .glyphicon {
+.CreateSession .formCategory .glyphicon.big {
   font-size: 50px;
   width: 100px;
 }
@@ -25,7 +25,11 @@
   flex: 1;
 }
 
-.CreateSession h2, .CreateSession h3 {
+.CreateSession h1 {
+  text-align: center;
+}
+
+.CreateSession h1, .CreateSession h3 {
   font-weight: 200;
 }
 

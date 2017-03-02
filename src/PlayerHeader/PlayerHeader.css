@@ -27,6 +27,8 @@
 
 .PlayerHeader .username {
   margin-right: 10px;
+  color: #666;
+  font-weight: 200;
 }
 
 .PlayerHeader .logOut {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
+import { Modal, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
 import './ModalStyles.css';
 
 export default function LoginModal(props) {

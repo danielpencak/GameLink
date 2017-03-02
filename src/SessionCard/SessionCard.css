@@ -3,6 +3,7 @@
   height: 70px;
   border-bottom: 1px solid #DDD;
   padding-right: 5px;
+  overflow: scroll;
 }
 
 .SessionCard:hover {

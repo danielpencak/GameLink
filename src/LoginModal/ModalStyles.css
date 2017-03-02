@@ -1,0 +1,35 @@
+.modal-body {
+  padding: 30px;
+}
+
+.modal-body h2 {
+  font-family: 'Lobster';
+  color: #444;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+.modal-body .buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5px;
+  margin-top: 20px;
+}
+
+.modal-body .buttons button:last-child {
+  background-color: #A8DAEF;
+  border-color: #A8DAEF;
+}
+
+.modal-body button {
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  background-color: #F8F8F8;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+.modal-body button:hover {
+  transform: scale(1.1);
+}

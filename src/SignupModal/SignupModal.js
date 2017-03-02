@@ -1,14 +1,13 @@
 import React from 'react';
 import { Modal, Button, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
+import '../LoginModal/ModalStyles.css';
 
 export default function SignupModal(props) {
   return (
     <div className="static-modal">
       <Modal.Dialog>
         <Modal.Body>
-          <header>
-            <h2>Signup</h2>
-          </header>
+          <h2>Signup</h2>
           <Form horizontal onSubmit={props.handleSignupSubmit}>
             <FormGroup controlId="formHorizontalEmail">
               <Col componentClass={ControlLabel} sm={4}>
@@ -59,14 +58,14 @@ export default function SignupModal(props) {
               </Col>
             </FormGroup>
             <FormGroup>
-              <Col smOffset={2} sm={8}>
-                <Button name='signupModalOpen' onClick={props.toggleModal}>
+              <div className="buttons">
+                <button name='signupModalOpen' onClick={props.toggleModal}>
                   Close
-                </Button>
-                <Button bsStyle='primary' type="submit">
+                </button>
+                <button type="submit">
                   Sign up
-                </Button>
-              </Col>
+                </button>
+              </div>
             </FormGroup>
           </Form>
         </Modal.Body>

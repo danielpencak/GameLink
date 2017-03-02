@@ -2,14 +2,12 @@
   display: flex;
   height: 120px;
   border-bottom: 1px solid #DDD;
-  padding-right: 5px;
-  overflow: scroll;
-  padding: 20px;
+  padding: 0 20px;
   align-items: center;
 }
 
 .SessionCard:hover {
-  opacity: .75;
+  transform: scale(1.01);
 }
 
 .SessionCard img {
@@ -19,12 +17,14 @@
 }
 
 .SessionCard .imageWrapper {
-  width: 100px;
+  width: 80px;
   display: flex;
   justify-content: center;
+  margin-right: 20px;
 }
 
 .SessionCard h2 {
+  margin-left: 20px;
   font-size: 18px;
   margin: 5px 0;
 }
@@ -36,10 +36,9 @@
 
 .SessionCard > div:nth-child(2) {
   flex: 1;
-  padding-left: 10px;
 }
 
 .SessionCard .glyphicon {
-  margin-right: 5px;
+  margin: 0 5px 0 20px;
   font-size: 16px;
 }

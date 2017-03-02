@@ -44,12 +44,16 @@ class Dashboard extends Component {
     return (
       <Grid className="Dashboard">
         <Row className="show-grid">
-          <Col className="list" sm={6}>
-            <Link to="/session/create"><Button className="newSessionButton" bsStyle="primary" bsSize="large">New Session</Button></Link>
+          <Col className="list" md={6} lg={5}>
             <header>
               <h2>My Sessions</h2>
             </header>
             <div className="myList">
+              <div>
+                <Link to="/session/create" className="newSessionButton">
+                  NEW <Glyphicon glyph="plus" />
+                </Link>
+              </div>
               {
                 this.props.playerSessions.map(session =>
                   <Link to={`/session/${session.sessionId}`} key={ session.sessionId }>
@@ -81,7 +85,7 @@ class Dashboard extends Component {
               }
             </div>
           </Col>
-          <Col className="map" sm={6}>
+          <Col className="map" md={6} lg={7}>
             <Map coords={this.props.coords} sessions={this.state.sessions} onMarkerClick={this.onMarkerClick} />
           </Col>
         </Row>

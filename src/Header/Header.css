@@ -1,4 +1,43 @@
-.Navbar {
+.Header {
   border-radius: 0;
   margin: 0;
+}
+
+.Header .container {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid #CCC;
+  background-color: white;
+  position: relative;
+}
+
+
+.Header a {
+  color: #333;
+  font-size: 28px;
+  letter-spacing: 1px;
+  font-family: 'Lobster'
+}
+
+.Header a:hover {
+  transform: scale(1.05);
+}
+
+.Header .account {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Header a:hover {
+  text-decoration: none;
+}
+
+.Header .container::before, .Header .container::after {
+  display: none;
 }

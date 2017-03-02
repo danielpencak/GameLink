@@ -1,19 +1,50 @@
 .PlayerHeader {
+  height: 70px;
+  cursor: pointer;
+}
+
+.PlayerHeader .playerIcon {
+  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 70px;
+  font-size: 20px;
 }
 
 .PlayerHeader img {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  border: 1px solid #666;
+  background-color: #DDD;
+}
+
+.PlayerHeader img:hover {
   background-color: white;
+  border: 1px solid #DDD;
+
+}
+
+.PlayerHeader .username {
+  margin-right: 10px;
+}
+
+.PlayerHeader .logOut {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 0;
+}
+
+.PlayerHeader .logOut:hover {
+  transform: scale(1.01);
 }
 
 .PlayerHeader a {
-  color: white;
+  color: black;
 }
 
 .PlayerHeader li {

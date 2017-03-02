@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 import './Map.css';
+import MapStyles from './MapStyles'
 
 export default function Map(props) {
   return (
@@ -16,7 +17,8 @@ export default function Map(props) {
         }
         googleMapElement={
           <GoogleMap
-            defaultZoom={10}
+            defaultOptions={{styles: MapStyles}}
+            defaultZoom={12}
             center={{ lat: props.coords.lat || 47.6062, lng: props.coords.lng || -122.3321 }}
           >
             {props.sessions.map((session, index) => {

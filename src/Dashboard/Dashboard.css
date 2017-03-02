@@ -9,16 +9,15 @@
 .Dashboard .list {
   overflow: scroll;
   padding-bottom: 100px;
+  box-shadow: 1px 3px 3px #999;
+  position: relative;
+  z-index: 2;
 }
 
 .Dashboard.container {
   padding: 0;
   margin: 0;
   width: 100%;
-}
-
-.Dashboard .col-sm-6 {
-  padding: 0;
 }
 
 .Dashboard .row {

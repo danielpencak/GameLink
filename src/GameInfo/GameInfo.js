@@ -8,10 +8,10 @@ export default function GameInfo(props) {
       <img src={props.game.imageUrl} alt={props.game.name} onError={missingImage} />
       <div>
         <h2>{props.game.name}</h2>
-        <h3>
+        <h4>
           <Glyphicon glyph="user" />
           { `${props.game.minPlayers} to ${props.game.maxPlayers}` }
-        </h3>
+        </h4>
         <p>
           {
             props.game.description ? props.game.description

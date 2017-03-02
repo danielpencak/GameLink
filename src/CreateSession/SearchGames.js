@@ -1,19 +1,18 @@
 import React from 'react';
-import FieldGroup from '../Forms/FieldGroup';
 import './SearchGames.css';
-import { Button } from 'react-bootstrap';
+import { Button, FormGroup, FormControl } from 'react-bootstrap';
 
 export default function SearchGames(props) {
   return (
     <div className="SearchGames">
-      <FieldGroup
-        type="text"
+      <FormGroup className="searchField">
+        <FormControl type="text"
         name="searchTerm"
-        placeholder="Start typing a name"
+        placeholder="Start typing a game name"
         value={ props.searchTerm }
         onChange={ props.handleChange }
-        className="search"
-      />
+        className="search" />
+      </FormGroup>
       <div className="searchResults">
         {
           props.games.filter(props.filterGames).map( game =>
@@ -29,7 +28,7 @@ export default function SearchGames(props) {
         }
       </div>
       {
-        props.searchTerm.length > 2 ?
+        props.searchTerm.length > 1 ?
         <Button bsStyle="primary">Add New</Button>
         :null
       }

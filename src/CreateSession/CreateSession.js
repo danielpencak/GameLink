@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Checkbox, Button, FormControl, ControlLabel } from 'react-bootstrap'
+import { Form, FormGroup, Checkbox, Button, FormControl, ControlLabel, Glyphicon } from 'react-bootstrap'
 import axios from 'axios';
 import './CreateSession.css'
 import SearchGames from './SearchGames'
@@ -26,7 +26,8 @@ class CreateSession extends Component {
       moment: moment(),
       locationName: '',
       locationCoords: {},
-      description: ''
+      description: '',
+      placesBoxOpen: true
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +37,8 @@ class CreateSession extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.onChange = this.onChange.bind(this);
     this.setLocation = this.setLocation.bind(this);
-    this.handleSubmit= this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleSelectPlace = this.toggleSelectPlace.bind(this);
   }
 
   handleChange({ target }) {
@@ -91,10 +93,16 @@ class CreateSession extends Component {
   }
 
   setLocation(place) {
+    const placeName = place.label.slice(0, place.label.indexOf(','))
     this.setState({
-      locationName: place.label,
-      locationCoords: place.location
+      locationName: `${placeName}, ${place.gmaps.formatted_address}`,
+      locationCoords: place.location,
+      placesBoxOpen: false
     })
+  }
+
+  toggleSelectPlace() {
+    this.setState({ placesBoxOpen: !this.state.placesBoxOpen })
   }
 
   handleSubmit(event) {
@@ -132,7 +140,7 @@ class CreateSession extends Component {
           :
           <h2>Create Session</h2>
         }
-        <h3>Game</h3>
+        <div className="formWrapper">
           { !this.state.gameSelected ?
             <SearchGames games={this.state.games} handleSelectGame={this.handleSelectGame} filterGames={this.filterGames} handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>
 
@@ -150,58 +158,107 @@ class CreateSession extends Component {
           {
             this.state.gameSelected ?
             <Form onSubmit={this.props.handleSubmit || this.handleSubmit}>
-              <h3>Miscellaneous</h3>
-              <FormGroup>
-                <Checkbox checked={
-                  this.props.isUpdated ?
-                  this.props.hasBoard
-                  : this.state.hasBoard
-                } onChange={this.props.handleCheckboxChange || this.handleCheckboxChange}>
-                  I have the game materials
-                </Checkbox>
-              </FormGroup>
-              <FormGroup>
-                <ControlLabel>Description</ControlLabel>
-                <FormControl componentClass="textarea" placeholder="e.g. &#34;Let&#39;s game and have some beers!&#34;" value={this.props.description || this.state.description} onChange={this.props.handleChange || this.handleChange} name="description"></FormControl>
-              </FormGroup>
-              <h3>Players</h3>
-              <FormGroup>
-                <div className="slider">
-                  <span>
-                    Minimum Players: {this.props.sessionMinPlayers || this.state.sessionMinPlayers}
-                  </span>
-                  <input type="range" value={this.props.sessionMinPlayers || this.state.sessionMinPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMinPlayers" min={this.props.minPlayers || this.state.game.minPlayers} max={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}/>
-                </div>
-                <div className="slider">
-                  <span>
-                    Maximum Players: {this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}
-                  </span>
-                  <input type="range" value={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMaxPlayers" min={this.props.sessionMinPlayers || this.state.sessionMinPlayers} max={this.props.maxPlayers || this.state.game.maxPlayers}/>
-                </div>
-              </FormGroup>
-              <h3>Time</h3>
-              <FormGroup>
-                <InputMoment moment={this.props.time || this.state.moment} onChange={this.props.onChange || this.onChange} />
-              </FormGroup>
-              <h3>Place</h3>
-              <FormGroup>
-                {
-                  this.props.isUpdated ?
-                  <Geosuggest onSuggestSelect={(place) => {this.props.setLocation(place)}}/>
-                  :
-                  <Geosuggest onSuggestSelect={(place) => {this.setLocation(place)}}/>
-                }
-                {
-                  this.props.locationName || null
-                }
-                <SessionMap locationName={this.props.locationName || this.state.locationName} locationCoords={this.props.locationCoords || this.state.locationCoords} />
-              </FormGroup>
-              <Button type="submit" bsStyle="primary">
-                Submit
-              </Button>
-            </Form>
-            :null
-          }
+
+            <div className="formCategory">
+              <Glyphicon glyph="map-marker" />
+              <div className="categoryWrapper">
+                <h3>Place</h3>
+                <FormGroup>
+                  {
+                    (this.props.isUpdated
+                      ? this.props.placesBoxOpen
+                      : this.state.placesBoxOpen
+                    )
+                    ? this.props.isUpdated
+                        ? <Geosuggest onSuggestSelect={(place) => {this.props.setLocation(place)}}/>
+                        : <Geosuggest onSuggestSelect={(place) => {this.setLocation(place)}}/>
+                      : null
+                  }
+                  {
+                    (this.props.isUpdated
+                      ? !this.props.placesBoxOpen
+                      : !this.state.placesBoxOpen
+                    )
+                    ? <div className="locationName">
+                        <div>
+                          { this.props.locationName || this.state.locationName }
+                        </div>
+                        <a onClick={ this.props.toggleSelectPlace || this.toggleSelectPlace }>
+                          Change
+                        </a>
+                      </div>
+                    : null
+                  }
+                  <SessionMap locationName={this.props.locationName || this.state.locationName} locationCoords={this.props.locationCoords || this.state.locationCoords} />
+                </FormGroup>
+              </div>
+            </div>
+
+            <div className="formCategory">
+              <Glyphicon glyph="time" />
+              <div className="categoryWrapper">
+                <h3>Time</h3>
+                <FormGroup>
+                  <InputMoment moment={this.props.time || this.state.moment} onChange={this.props.onChange || this.onChange} />
+                </FormGroup>
+              </div>
+            </div>
+
+            <div className="formCategory">
+              <Glyphicon glyph="user" />
+              <div className="categoryWrapper">
+                <h3>Players</h3>
+                <FormGroup>
+                  <div className="slider">
+                    <span>
+                      Min: {this.props.sessionMinPlayers || this.state.sessionMinPlayers}
+                    </span>
+                    <input type="range" value={this.props.sessionMinPlayers || this.state.sessionMinPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMinPlayers" min={this.props.minPlayers || this.state.game.minPlayers} max={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}/>
+                  </div>
+                  <div className="slider">
+                    <span>
+                      Max: {this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}
+                    </span>
+                    <input type="range" value={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMaxPlayers" min={this.props.sessionMinPlayers || this.state.sessionMinPlayers} max={this.props.maxPlayers || this.state.game.maxPlayers}/>
+                  </div>
+                </FormGroup>
+              </div>
+            </div>
+
+            <div className="formCategory">
+              <Glyphicon glyph="tower" />
+              <div className="categoryWrapper">
+                <h3>Miscellaneous</h3>
+                <FormGroup>
+                  <Checkbox
+                    checked={
+                      this.props.isUpdated
+                      ? this.props.hasBoard
+                      : this.state.hasBoard
+                    }
+                    onChange={this.props.handleCheckboxChange || this.handleCheckboxChange}
+                  >
+                    I have the game materials
+                  </Checkbox>
+                  <ControlLabel>Description</ControlLabel>
+                  <FormControl
+                    componentClass="textarea"
+                    placeholder="e.g. &#34;Let&#39;s game and have some beers!&#34;"
+                    value={this.props.description || this.state.description}
+                    onChange={this.props.handleChange || this.handleChange}
+                    name="description"
+                  />
+                </FormGroup>
+              </div>
+            </div>
+
+            <Button className="submitForm" type="submit" bsStyle="primary">
+              Submit
+            </Button>
+          </Form>
+          :null
+        }
+        </div>
       </div>
     )
   }

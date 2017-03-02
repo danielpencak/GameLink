@@ -10,7 +10,8 @@ class UpdateSession extends Component {
 
     this.state = {
       hasBoard: true,
-      time: moment()
+      time: moment(),
+      placesBoxOpen: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,6 +19,7 @@ class UpdateSession extends Component {
     this.onChange = this.onChange.bind(this);
     this.setLocation = this.setLocation.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleSelectPlace = this.toggleSelectPlace.bind(this);
   }
 
   componentDidMount() {
@@ -67,10 +69,16 @@ class UpdateSession extends Component {
   }
 
   setLocation(place) {
+    const placeName = place.label.slice(0, place.label.indexOf(','))
     this.setState({
-      locationName: place.label,
-      locationCoords: place.location
+      locationName: `${placeName}, ${place.gmaps.formatted_address}`,
+      locationCoords: place.location,
+      placesBoxOpen: false
     })
+  }
+
+  toggleSelectPlace() {
+    this.setState({ placesBoxOpen: !this.state.placesBoxOpen })
   }
 
   handleSubmit(event) {
@@ -103,7 +111,27 @@ class UpdateSession extends Component {
 
   render() {
     return (
-      <CreateSession addSession={this.props.addSession} game={this.state.game}  isUpdated={true} hasBoard={this.state.hasBoard} description={this.state.description} sessionMinPlayers={this.state.sessionMinPlayers} sessionMaxPlayers={this.state.sessionMaxPlayers} handleChange={this.handleChange} handleCheckboxChange={this.handleCheckboxChange} minPlayers={this.state.minPlayers} maxPlayers={this.state.maxPlayers} onChange={this.onChange} time={this.state.time} locationName={this.state.locationName} locationCoords={this.state.locationCoords} setLocation={this.setLocation} handleSubmit={this.handleSubmit} />
+      <CreateSession
+        addSession={this.props.addSession}
+        game={this.state.game}
+        isUpdated={true}
+        hasBoard={this.state.hasBoard}
+        description={this.state.description}
+        sessionMinPlayers={this.state.sessionMinPlayers}
+        sessionMaxPlayers={this.state.sessionMaxPlayers}
+        handleChange={this.handleChange}
+        handleCheckboxChange={this.handleCheckboxChange}
+        minPlayers={this.state.minPlayers}
+        maxPlayers={this.state.maxPlayers}
+        onChange={this.onChange}
+        time={this.state.time}
+        locationName={this.state.locationName}
+        locationCoords={this.state.locationCoords}
+        setLocation={this.setLocation}
+        handleSubmit={this.handleSubmit}
+        placesBoxOpen={this.state.placesBoxOpen}
+        toggleSelectPlace={this.toggleSelectPlace}
+      />
     );
   }
 }

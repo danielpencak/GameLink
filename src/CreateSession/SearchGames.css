@@ -2,6 +2,10 @@
   border-radius: 0;
 }
 
+.SearchGames .searchField {
+  padding: 0;
+}
+
 .SearchGames .gameResult {
   display: flex;
   align-items: center;

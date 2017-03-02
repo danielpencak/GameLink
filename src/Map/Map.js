@@ -18,7 +18,6 @@ export default function Map(props) {
           <GoogleMap
             defaultZoom={10}
             center={{ lat: props.coords.lat || 47.6062, lng: props.coords.lng || -122.3321 }}
-            onClick={props.onMapClick}
           >
             {props.sessions.map((session, index) => {
               const position = {

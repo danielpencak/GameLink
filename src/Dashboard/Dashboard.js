@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Glyphicon, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Glyphicon } from 'react-bootstrap';
 import axios from 'axios';
 import SessionCard from '../SessionCard/SessionCard';
 import Map from '../Map/Map';

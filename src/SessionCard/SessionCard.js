@@ -7,7 +7,9 @@ export default function SessionCard(props) {
   const { session } = props;
   return(
     <div className="SessionCard">
-      <img src={ session.imageUrl } alt={ session.gameName } onError={missingImage}/>
+      <div className="imageWrapper">
+        <img src={ session.imageUrl } alt={ session.gameName } onError={missingImage}/>
+      </div>
       <div>
         <h2>{ session.gameName }</h2>
         <p>{session.locationName } </p>

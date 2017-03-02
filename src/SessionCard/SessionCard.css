@@ -1,9 +1,11 @@
 .SessionCard {
   display: flex;
-  height: 70px;
+  height: 120px;
   border-bottom: 1px solid #DDD;
   padding-right: 5px;
   overflow: scroll;
+  padding: 20px;
+  align-items: center;
 }
 
 .SessionCard:hover {
@@ -11,8 +13,15 @@
 }
 
 .SessionCard img {
-  max-width: 100px;
-  object-fit: cover;
+  max-height: 80px;
+  max-width: 80px;
+  object-fit: contain;
+}
+
+.SessionCard .imageWrapper {
+  width: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .SessionCard h2 {

@@ -8,7 +8,7 @@ exports.seed = knex => {
       return knex('players').insert([
         {
           id: 1,
-          username: 'banana',
+          username: 'boardGeek74',
           hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
           email: 'banana@pudding.com',
           skill_level: 11,
@@ -18,7 +18,7 @@ exports.seed = knex => {
         },
         {
           id: 2,
-          username: 'pudding',
+          username: 'gameNut99',
           hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
           email: 'pudding@banana.com',
           skill_level: 1,
@@ -28,7 +28,37 @@ exports.seed = knex => {
         },
         {
           id: 3,
-          username: 'carl',
+          username: 'papasmurf',
+          hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
+          email: 'carl@what.com',
+          skill_level: 999,
+          avatar: 'http://www.fillmurray.com/400/300',
+          bio: 'I\'m just carl',
+          birth_date: '1992-09-30'
+        },
+        {
+          id: 4,
+          username: 'sometext',
+          hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
+          email: 'smurf@what.com',
+          skill_level: 999,
+          avatar: 'http://www.fillmurray.com/400/300',
+          bio: 'I\'m just carl',
+          birth_date: '1992-09-30'
+        },
+        {
+          id: 5,
+          username: 'dallas',
+          hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
+          email: 'carl@what.com',
+          skill_level: 999,
+          avatar: 'http://www.fillmurray.com/400/300',
+          bio: 'I\'m just carl',
+          birth_date: '1992-09-30'
+        },
+        {
+          id: 6,
+          username: 'papasmurf',
           hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
           email: 'carl@what.com',
           skill_level: 999,

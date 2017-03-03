@@ -27,9 +27,6 @@ module.exports = {
       locationLng: Joi.number()
         .label('Location Longitude')
         .required(),
-      description: Joi.string()
-        .label('Description')
-        .trim(),
       hasBoard: Joi.boolean()
         .label('Has Board'),
       time: Joi.number().integer()
@@ -55,9 +52,6 @@ module.exports = {
         .label('Location Latitude'),
       locationLng: Joi.number()
         .label('Location Longitude'),
-      description: Joi.string()
-        .label('Description')
-        .trim(),
       hasBoard: Joi.boolean()
         .label('Has Board'),
       time: Joi.number().integer()

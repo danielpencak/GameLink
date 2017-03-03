@@ -79,8 +79,7 @@ class Parent extends Component {
       })
   }
 
-  handleSignupSubmit(event) {
-    event.preventDefault();
+  handleSignupSubmit() {
     axios.post('/api/players', {
       email: this.state.signupEmail,
       password: this.state.signupPassword,

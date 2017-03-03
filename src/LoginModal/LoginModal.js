@@ -1,43 +1,59 @@
-import React from 'react';
-import { Modal, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Modal, Row, Col, ControlLabel } from 'react-bootstrap';
 import './ModalStyles.css';
+import Validation from 'react-validation';
+import '../Validations';
 
-export default function LoginModal(props) {
-  return (
-    <div className="static-modal">
-      <Modal.Dialog>
-        <Modal.Body>
-          <h2>Login</h2>
-          <Form horizontal onSubmit={props.handleLoginSubmit}>
-            <FormGroup>
-              <Col componentClass={ControlLabel} sm={2}>
-                Email
-              </Col>
-              <Col sm={10}>
-                <FormControl value={props.loginEmail} onChange={props.handleChange} name='loginEmail' type="email" placeholder="Email" />
-              </Col>
-            </FormGroup>
-            <FormGroup>
-              <Col componentClass={ControlLabel} sm={2}>
-                Password
-              </Col>
-              <Col sm={10}>
-                <FormControl onChange={props.handleChange} value={props.loginPassword} name='loginPassword' type="password" placeholder="Password" />
-              </Col>
-            </FormGroup>
-            <FormGroup>
-              <div className="buttons">
-                <a name='loginModalOpen' onClick={props.toggleModal}>
-                  Close
-                </a>
-                <button type="submit">
-                  Sign in
-                </button>
+class LoginModal extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      errors: {}
+    }
+  }
+
+  render() {
+    const { props } = this;
+    return (
+      <div className="static-modal">
+        <Modal.Dialog>
+          <Modal.Body>
+            <h2>Login</h2>
+            <Validation.components.Form noValidate onSubmit={props.handleLoginSubmit}>
+              <Row className="inputField">
+                <Col componentClass={ControlLabel} sm={2}>
+                  Email
+                </Col>
+                <Col sm={10}>
+                  <Validation.components.Input validations={['required', 'email']} value={props.loginEmail} onChange={props.handleChange} name='loginEmail' type="email" placeholder="Email" />
+                </Col>
+              </Row>
+              <Row className="inputField">
+                <Col componentClass={ControlLabel} sm={2}>
+                  Password
+                </Col>
+                <Col sm={10}>
+                  <Validation.components.Input validations={['required', 'passwordLength']} onChange={props.handleChange} value={props.loginPassword} name='loginPassword' type="password" placeholder="Password" />
+                </Col>
+              </Row>
+              <div>
+                <div className="buttons">
+                  <a name='loginModalOpen' onClick={props.toggleModal}>
+                    Close
+                  </a>
+                  <button type="submit">
+                    Sign in
+                  </button>
+                </div>
               </div>
-            </FormGroup>
-          </Form>
-        </Modal.Body>
-      </Modal.Dialog>
-    </div>
-  );
+            </Validation.components.Form>
+          </Modal.Body>
+        </Modal.Dialog>
+      </div>
+    );
+
+  }
 }
+
+export default LoginModal;

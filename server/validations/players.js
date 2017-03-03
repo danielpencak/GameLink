@@ -21,8 +21,6 @@ module.exports.post = {
       .trim()
       .required(),
     skillLevel: Joi.number()
-      .integer(),
-    bio: Joi.string(),
-    birthDate: Joi.string()
+      .integer()
   }
 };

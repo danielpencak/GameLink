@@ -58,7 +58,7 @@ exports.seed = knex => {
         },
         {
           id: 6,
-          username: 'papasmurf',
+          username: 'steve0',
           hashed_password: '$2a$12$i.bFhnaoRY9n86.6eabrK.DICXmu1CDyvYmwo.cnBn51UISeBTOIq',
           email: 'papasmurf@what.com',
           skill_level: 999,

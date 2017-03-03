@@ -9,7 +9,7 @@ export default function LoginModal(props) {
         <Modal.Body>
           <h2>Login</h2>
           <Form horizontal onSubmit={props.handleLoginSubmit}>
-            <FormGroup controlId="formHorizontalEmail">
+            <FormGroup>
               <Col componentClass={ControlLabel} sm={2}>
                 Email
               </Col>
@@ -17,7 +17,7 @@ export default function LoginModal(props) {
                 <FormControl value={props.loginEmail} onChange={props.handleChange} name='loginEmail' type="email" placeholder="Email" />
               </Col>
             </FormGroup>
-            <FormGroup controlId="formHorizontalPassword">
+            <FormGroup>
               <Col componentClass={ControlLabel} sm={2}>
                 Password
               </Col>
@@ -27,9 +27,9 @@ export default function LoginModal(props) {
             </FormGroup>
             <FormGroup>
               <div className="buttons">
-                <button name='loginModalOpen' onClick={props.toggleModal}>
+                <a name='loginModalOpen' onClick={props.toggleModal}>
                   Close
-                </button>
+                </a>
                 <button type="submit">
                   Sign in
                 </button>

@@ -59,9 +59,9 @@ export default function SignupModal(props) {
             </FormGroup>
             <FormGroup>
               <div className="buttons">
-                <button name='signupModalOpen' onClick={props.toggleModal}>
+                <a name='signupModalOpen' onClick={props.toggleModal}>
                   Close
-                </button>
+                </a>
                 <button type="submit">
                   Sign up
                 </button>

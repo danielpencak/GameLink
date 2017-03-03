@@ -17,12 +17,12 @@
   margin-top: 20px;
 }
 
-.modal-body .buttons button:last-child {
+.modal-body .buttons button {
   background-color: #A8DAEF;
   border-color: #A8DAEF;
 }
 
-.modal-body button {
+.modal-body a, .modal-body button {
   border: 1px solid #DDD;
   border-radius: 5px;
   background-color: #F8F8F8;
@@ -30,6 +30,12 @@
   margin-right: 10px;
 }
 
-.modal-body button:hover {
+.modal-body a:hover, .modal-body button:hover {
   transform: scale(1.1);
+  text-decoration: none;
+}
+
+.modal-body a {
+  color: black;
+  cursor: pointer;
 }

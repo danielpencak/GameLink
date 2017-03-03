@@ -948,7 +948,7 @@ batch@0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.5.3.tgz#3f3414f380321743bfc1042f9a83ff1d5824d464"
 
-bcrypt-as-promised@^1.1.0:
+bcrypt-as-promised@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/bcrypt-as-promised/-/bcrypt-as-promised-1.1.0.tgz#b41441dc63cda1864450a6ae587272cf5738fcf6"
   dependencies:

@@ -45,10 +45,11 @@ Click here to watch a video demo of the app.
 
 ##API's
 
-1. Google Maps
-2. Google Places
-3. RoboHash
-4. BoardGameGeek
+1. Google Maps JavaScript API
+2. Google Static Maps API
+3. Google Places API
+4. RoboHash
+5. BoardGameGeek API
 
 ##Future Development
 

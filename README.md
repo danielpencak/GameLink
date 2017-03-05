@@ -28,7 +28,7 @@ The biggest challenge we faced during the development of this application was de
 
 ##Features
 
-[<img src="/public/assets/video-thumbnail.png">](https://vimeo.com/207008496)
+[<img src="/public/img/video-thumbnail.png">](https://vimeo.com/207008496)
 
 Click here to watch a video demo of the app.
 

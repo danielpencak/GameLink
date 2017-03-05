@@ -11,8 +11,8 @@ class Home extends Component {
       heroString: 'Find people gaming near you!'
     }
 
-    this.getNearbyGames = this.getNearbyGames.bind(this)
-    this.locationUnavailable = this.locationUnavailable.bind(this)
+    this.getNearbyGames = this.getNearbyGames.bind(this);
+    this.locationUnavailable = this.locationUnavailable.bind(this);
   }
 
 

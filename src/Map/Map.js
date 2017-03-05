@@ -27,7 +27,11 @@ export default function Map(props) {
                 lng: Number(session.locationLng)
               }
               return (
-                <Marker position={position} onClick={() => props.onMarkerClick(index)} key={session.sessionId}/>
+                <Marker
+                  position={position}
+                  onClick={() => props.onMarkerClick(index)}
+                  key={session.sessionId}
+                />
               );
             })}
           </GoogleMap>

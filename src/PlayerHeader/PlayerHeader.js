@@ -22,11 +22,20 @@ class PlayerHeader extends Component {
           <Col className="username" smHidden xsHidden>
             {props.username}
           </Col>
-          <img src={`https://robohash.org/${props.username}`} alt={`${props.username}'s Avatar`}/>
+          <img
+            src={`https://robohash.org/${props.username}`}
+            alt={`${props.username}'s Avatar`}
+          />
         </div>
         {
           state.menuIsOpen
-          ? <Button onClick={props.handleLogout} className="logOut" bsStyle="primary">Logout</Button>
+          ? <Button
+              onClick={props.handleLogout}
+              className="logOut"
+              bsStyle="primary"
+            >
+              Logout
+            </Button>
           : null
         }
       </div>

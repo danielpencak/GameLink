@@ -24,5 +24,5 @@ export default function GameInfo(props) {
 }
 
 function missingImage(event) {
-  event.target.src='/img/not_found.png'
+  event.target.src='/img/not_found.png';
 }

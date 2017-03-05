@@ -13,8 +13,18 @@ export default function Header(props) {
               <PlayerHeader username={props.username} handleLogout={props.handleLogout} />
             </div>
           : <div className="loginButtons">
-              <button name='loginModalOpen' onClick={props.toggleModal}>Login</button>
-              <button name='signupModalOpen' onClick={props.toggleModal}>Signup</button>
+              <button
+                name='loginModalOpen'
+                onClick={props.toggleModal}
+              >
+                Login
+              </button>
+              <button
+                name='signupModalOpen'
+                onClick={props.toggleModal}
+              >
+                Signup
+              </button>
             </div>
         }
     </nav>

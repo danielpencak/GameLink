@@ -13,8 +13,7 @@ import { browserHistory } from 'react-router';
     super(props);
 
     this.state = {
-      session: {
-      },
+      session: {},
       players: [],
       game: {}
     };
@@ -56,12 +55,22 @@ import { browserHistory } from 'react-router';
     }, false)
 
     if (playerIsInSession) {
-      return <Button bsStyle="danger" onClick={() => { this.handleDeletePlayer(this.props.userId)}}>Leave Session</Button>
+      return <Button
+                bsStyle="danger"
+                onClick={() => { this.handleDeletePlayer(this.props.userId)}}
+              >
+                Leave Session
+              </Button>
     }
     if (this.state.players.length >= this.state.session.maxPlayers) {
       return <Button bsStyle="primary" disabled>Session Full</Button>
     }
-    return <Button bsStyle="primary" onClick={this.handleJoinSession}>Join Session</Button>
+    return <Button
+              bsStyle="primary"
+              onClick={this.handleJoinSession}
+            >
+              Join Session
+            </Button>
   }
 
   handleJoinSession() {
@@ -72,7 +81,9 @@ import { browserHistory } from 'react-router';
           id: this.props.userId
         }]
         const players = this.state.players.concat(player);
-        var newSession = JSON.parse(JSON.stringify(this.state.session));        newSession.playerCount = players.length;
+        const newSession = JSON.parse(JSON.stringify(this.state.session));
+
+        newSession.playerCount = players.length;
         newSession.imageUrl = this.state.game.imageUrl;
         newSession.sessionId = newSession.id;
         this.setState({ players });
@@ -114,17 +125,30 @@ import { browserHistory } from 'react-router';
             </div>
             <div className="sessionRow">
               <Glyphicon className="big" glyph="time" />
-              <p className="text">{moment(Number(this.state.session.time)).format('MMMM Do, hh:mma')}</p>
+              <p
+                className="text"
+              >
+                {moment(Number(this.state.session.time)).format('MMMM Do, hh:mma')}
+              </p>
             </div>
             <div className="sessionRow">
               <Glyphicon className="big" glyph="map-marker" />
               <p className="text">{this.state.session.locationName}</p>
             </div>
-              <SessionMap locationCoords={this.state.session.locationCoords} locationName={this.state.session.locationName}/>
+              <SessionMap
+                locationCoords={this.state.session.locationCoords}
+                locationName={this.state.session.locationName}
+              />
               {
-                this.state.session.ownerId === this.props.userId ?
-                  <Button bsStyle="primary" className="updateButton" onClick={() => {browserHistory.push(`/session/${this.props.params.sessionId}/edit`)}}>Update Session</Button>
-                  : null
+                this.state.session.ownerId === this.props.userId
+                ? <Button
+                    bsStyle="primary"
+                    className="updateButton"
+                    onClick={() => {browserHistory.push(`/session/${this.props.params.sessionId}/edit`)}}
+                  >
+                    Update Session
+                  </Button>
+                : null
               }
           </Col>
           <Col sm={3}>
@@ -136,7 +160,13 @@ import { browserHistory } from 'react-router';
             </div>
             {
               this.state.players.map(player => {
-                return <PlayerCard username={player.username} key={player.id} isOwner={this.props.userId === this.state.session.ownerId} handleDeletePlayer={this.handleDeletePlayer} playerId={player.id} />
+                return <PlayerCard
+                        username={player.username}
+                        key={player.id}
+                        isOwner={this.props.userId === this.state.session.ownerId}
+                        handleDeletePlayer={this.handleDeletePlayer}
+                        playerId={player.id}
+                      />
               })
             }
             {this.joinButton()}

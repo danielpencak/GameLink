@@ -49,7 +49,6 @@ class CreateSession extends Component {
 
   // Required by InputMoment
   onChange(time) {
-    console.log(time.unix());
     this.setState({ moment: time });
   }
 
@@ -135,126 +134,131 @@ class CreateSession extends Component {
     return (
       <div className="CreateSession">
         {
-          this.props.isUpdated ?
-          <h1>Update Session</h1>
-          :
-          <h1>Create Session</h1>
+          this.props.isUpdated
+          ? <h1>Update Session</h1>
+          : <h1>Create Session</h1>
         }
         <div className="formWrapper">
           <div className="formCategory">
             <Glyphicon className="big" glyph="tower" />
             { !this.state.gameSelected
-              ? <SearchGames games={this.state.games} handleSelectGame={this.handleSelectGame} filterGames={this.filterGames} handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>
+              ? <SearchGames
+                games={this.state.games}
+                handleSelectGame={this.handleSelectGame}
+                filterGames={this.filterGames}
+                handleChange={this.handleChange}
+                searchTerm={this.state.searchTerm}
+              />
 
               : <GameInfo game={this.props.game || this.state.game} />
             }
             {
-              this.props.isUpdated || !this.state.gameSelected ? null :
-              <a onClick={this.handleClearGame}>Change</a>
+              this.props.isUpdated || !this.state.gameSelected
+              ? null
+              : <a onClick={this.handleClearGame}>Change</a>
             }
           </div>
           {
-            this.state.gameSelected ?
-            <Form onSubmit={this.props.handleSubmit || this.handleSubmit}>
-
-            <div className="formCategory">
-              <Glyphicon className="big" glyph="map-marker" />
-              <div className="categoryWrapper">
-                <h3>Place</h3>
-                <FormGroup>
-                  {
-                    (this.props.isUpdated
-                      ? this.props.placesBoxOpen
-                      : this.state.placesBoxOpen
-                    )
-                    ? this.props.isUpdated
-                        ? <Geosuggest onSuggestSelect={(place) => {this.props.setLocation(place)}}/>
-                        : <Geosuggest onSuggestSelect={(place) => {this.setLocation(place)}}/>
-                      : null
-                  }
-                  {
-                    (this.props.isUpdated
-                      ? !this.props.placesBoxOpen
-                      : !this.state.placesBoxOpen
-                    )
-                    ? <div className="locationName">
-                        <div>
-                          { this.props.locationName || this.state.locationName }
-                        </div>
-                        <a onClick={ this.props.toggleSelectPlace || this.toggleSelectPlace }>
-                          Change
-                        </a>
-                      </div>
-                    : null
-                  }
-                  <SessionMap locationName={this.props.locationName || this.state.locationName} locationCoords={this.props.locationCoords || this.state.locationCoords} />
-                </FormGroup>
-              </div>
-            </div>
-
-            <div className="formCategory">
-              <Glyphicon className="big" glyph="time" />
-              <div className="categoryWrapper">
-                <h3>Time</h3>
-                <FormGroup>
-                  <InputMoment moment={this.props.time || this.state.moment} onChange={this.props.onChange || this.onChange} />
-                </FormGroup>
-              </div>
-            </div>
-
-            <div className="formCategory">
-              <Glyphicon className="big" glyph="user" />
-              <div className="categoryWrapper">
-                <h3>Players</h3>
-                <FormGroup>
-                  <div className="slider">
-                    <span>
-                      Min: {this.props.sessionMinPlayers || this.state.sessionMinPlayers}
-                    </span>
-                    <input type="range" value={this.props.sessionMinPlayers || this.state.sessionMinPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMinPlayers" min={this.props.minPlayers || this.state.game.minPlayers} max={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}/>
-                  </div>
-                  <div className="slider">
-                    <span>
-                      Max: {this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}
-                    </span>
-                    <input type="range" value={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMaxPlayers" min={this.props.sessionMinPlayers || this.state.sessionMinPlayers} max={this.props.maxPlayers || this.state.game.maxPlayers}/>
-                  </div>
-                </FormGroup>
-              </div>
-            </div>
-
-            <div className="formCategory">
-              <Glyphicon className="big" glyph="ok" />
-              <div className="categoryWrapper">
-                <h3>Miscellaneous</h3>
-                <FormGroup>
-                  <Checkbox
-                    checked={
-                      this.props.isUpdated
-                      ? this.props.hasBoard
-                      : this.state.hasBoard
+            this.state.gameSelected
+            ? <Form onSubmit={this.props.handleSubmit || this.handleSubmit}>
+                <div className="formCategory">
+                <Glyphicon className="big" glyph="map-marker" />
+                <div className="categoryWrapper">
+                  <h3>Place</h3>
+                  <FormGroup>
+                    {
+                      (this.props.isUpdated
+                        ? this.props.placesBoxOpen
+                        : this.state.placesBoxOpen
+                      )
+                      ? this.props.isUpdated
+                          ? <Geosuggest onSuggestSelect={(place) => {this.props.setLocation(place)}}/>
+                          : <Geosuggest onSuggestSelect={(place) => {this.setLocation(place)}}/>
+                        : null
                     }
-                    onChange={this.props.handleCheckboxChange || this.handleCheckboxChange}
-                  >
-                    I have the game materials
-                  </Checkbox>
-                  <ControlLabel>Description</ControlLabel>
-                  <FormControl
-                    componentClass="textarea"
-                    placeholder="e.g. &#34;Let&#39;s game and have some beers!&#34;"
-                    value={this.props.description || this.state.description}
-                    onChange={this.props.handleChange || this.handleChange}
-                    name="description"
-                  />
-                </FormGroup>
+                    {
+                      (this.props.isUpdated
+                        ? !this.props.placesBoxOpen
+                        : !this.state.placesBoxOpen
+                      )
+                      ? <div className="locationName">
+                          <div>
+                            { this.props.locationName || this.state.locationName }
+                          </div>
+                          <a onClick={ this.props.toggleSelectPlace || this.toggleSelectPlace }>
+                            Change
+                          </a>
+                        </div>
+                      : null
+                    }
+                    <SessionMap locationName={this.props.locationName || this.state.locationName} locationCoords={this.props.locationCoords || this.state.locationCoords} />
+                  </FormGroup>
+                </div>
               </div>
-            </div>
 
-            <Button className="submitForm" type="submit" bsStyle="primary">
-              Submit
-            </Button>
-          </Form>
-          :null
+              <div className="formCategory">
+                <Glyphicon className="big" glyph="time" />
+                <div className="categoryWrapper">
+                  <h3>Time</h3>
+                  <FormGroup>
+                    <InputMoment moment={this.props.time || this.state.moment} onChange={this.props.onChange || this.onChange} />
+                  </FormGroup>
+                </div>
+              </div>
+
+              <div className="formCategory">
+                <Glyphicon className="big" glyph="user" />
+                <div className="categoryWrapper">
+                  <h3>Players</h3>
+                  <FormGroup>
+                    <div className="slider">
+                      <span>
+                        Min: {this.props.sessionMinPlayers || this.state.sessionMinPlayers}
+                      </span>
+                      <input type="range" value={this.props.sessionMinPlayers || this.state.sessionMinPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMinPlayers" min={this.props.minPlayers || this.state.game.minPlayers} max={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}/>
+                    </div>
+                    <div className="slider">
+                      <span>
+                        Max: {this.props.sessionMaxPlayers || this.state.sessionMaxPlayers}
+                      </span>
+                      <input type="range" value={this.props.sessionMaxPlayers || this.state.sessionMaxPlayers} onChange={this.props.handleChange || this.handleChange} name="sessionMaxPlayers" min={this.props.sessionMinPlayers || this.state.sessionMinPlayers} max={this.props.maxPlayers || this.state.game.maxPlayers}/>
+                    </div>
+                  </FormGroup>
+                </div>
+              </div>
+
+              <div className="formCategory">
+                <Glyphicon className="big" glyph="ok" />
+                <div className="categoryWrapper">
+                  <h3>Miscellaneous</h3>
+                  <FormGroup>
+                    <Checkbox
+                      checked={
+                        this.props.isUpdated
+                        ? this.props.hasBoard
+                        : this.state.hasBoard
+                      }
+                      onChange={this.props.handleCheckboxChange || this.handleCheckboxChange}
+                    >
+                      I have the game materials
+                    </Checkbox>
+                    <ControlLabel>Description</ControlLabel>
+                    <FormControl
+                      componentClass="textarea"
+                      placeholder="e.g. &#34;Let&#39;s game and have some beers!&#34;"
+                      value={this.props.description || this.state.description}
+                      onChange={this.props.handleChange || this.handleChange}
+                      name="description"
+                    />
+                  </FormGroup>
+                </div>
+              </div>
+
+              <Button className="submitForm" type="submit" bsStyle="primary">
+                Submit
+              </Button>
+            </Form>
+          : null
         }
         </div>
       </div>

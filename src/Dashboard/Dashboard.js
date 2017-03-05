@@ -84,7 +84,11 @@ class Dashboard extends Component {
             </div>
           </Col>
           <Col className="map" md={6} lg={7}>
-            <Map coords={this.props.coords} sessions={this.state.sessions} onMarkerClick={this.onMarkerClick} />
+            <Map
+              coords={this.props.coords}
+              sessions={this.state.sessions}
+              onMarkerClick={this.onMarkerClick}
+            />
           </Col>
         </Row>
       </Grid>

@@ -20,13 +20,23 @@ class LoginModal extends Component{
         <Modal.Dialog>
           <Modal.Body>
             <h2>Login</h2>
-            <Validation.components.Form noValidate onSubmit={props.handleLoginSubmit}>
+            <Validation.components.Form
+              noValidate
+              onSubmit={props.handleLoginSubmit}
+            >
               <Row className="inputField">
                 <Col componentClass={ControlLabel} sm={2}>
                   Email
                 </Col>
                 <Col sm={10}>
-                  <Validation.components.Input validations={['required', 'email']} value={props.loginEmail} onChange={props.handleChange} name='loginEmail' type="email" placeholder="Email" />
+                  <Validation.components.Input
+                    validations={['required', 'email']}
+                    value={props.loginEmail}
+                    onChange={props.handleChange}
+                    name='loginEmail'
+                    type="email"
+                    placeholder="Email"
+                  />
                 </Col>
               </Row>
               <Row className="inputField">
@@ -34,7 +44,14 @@ class LoginModal extends Component{
                   Password
                 </Col>
                 <Col sm={10}>
-                  <Validation.components.Input validations={['required', 'passwordLength']} onChange={props.handleChange} value={props.loginPassword} name='loginPassword' type="password" placeholder="Password" />
+                  <Validation.components.Input
+                    validations={['required', 'passwordLength']}
+                    onChange={props.handleChange}
+                    value={props.loginPassword}
+                    name='loginPassword'
+                    type="password"
+                    placeholder="Password"
+                  />
                 </Col>
               </Row>
               <div>

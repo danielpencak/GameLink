@@ -25,7 +25,6 @@ class UpdateSession extends Component {
   componentDidMount() {
     axios.get(`/api/sessions/${this.props.params.sessionId}`)
       .then(({ data }) => {
-        console.log(data);
         const game = {
           maxPlayers: data.gameMaxPlayers,
           minPlayers: data.gameMinPlayers,
@@ -83,6 +82,7 @@ class UpdateSession extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
     const { game, sessionMinPlayers, sessionMaxPlayers, locationName, locationCoords, hasBoard, time, description } = this.state;
     const session = {
       gameId: game.id,
@@ -95,6 +95,7 @@ class UpdateSession extends Component {
       description,
       hasBoard
     }
+
     axios.patch(`/api/sessions/${this.props.params.sessionId}`, session)
       .then(({ data }) => {
         data.playerCount = this.state.playerCount;
